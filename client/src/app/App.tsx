@@ -2,16 +2,20 @@ import React from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import './App.scss';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import { SpellsList } from '../components';
+import { SpellsList } from '../components/Main';
+import { Navbar } from '../components/NavBar';
+import { Register, Login } from 'src/components/Users';
 
 function App() {
   return (
     <>
     <div className="App">
+      <Navbar/>
       <header className="App-header">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="about" element={<About />} />
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
         </Routes>
       </header>
     </div>
@@ -46,23 +50,6 @@ function Home() {
       </main>
       <nav>
         <Link to="/about">About</Link>
-      </nav>
-    </>
-  );
-}
-
-function About() {
-  return (
-    <>
-      <main>
-        <h2>Who are we?</h2>
-        <p>
-          That feels like an existential question, don't you
-          think?
-        </p>
-      </main>
-      <nav>
-        <Link to="/">Home</Link>
       </nav>
     </>
   );

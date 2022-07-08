@@ -1,9 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { SpellDataObject, SpellInfoProps } from "../types/SpellData";
+import { SpellDataObject, SpellInfoProps } from "../../types/SpellData";
 import Card from 'react-bootstrap/Card';
-
 
 
 export function SpellCard(props: SpellInfoProps) {

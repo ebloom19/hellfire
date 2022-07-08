@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Form from 'react-bootstrap/Form';
 import { SpellCard } from "./SpellData";
 import { Rings } from 'react-loader-spinner';
-import { SpellsObject } from "../types/SpellsList";
+import { SpellsObject } from "../../types/SpellsList";
 
 function callServer() {
     axios.get('http://localhost:8000/test', {
