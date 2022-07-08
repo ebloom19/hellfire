@@ -1,0 +1,174 @@
+$base-color: #e8443c;
+$secondary-color: #e94445;
+$dark-blue: #264c5e;
+$bague: #a34c50;
+$off-white: #cec2ae;
+$burgundy: #4a2932;
+
+.App {
+  text-align: center;
+  z-index: 100;
+  // position: absolute;
+  // margin: 0 auto;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: $base-color;
+  background-image: linear-gradient(62deg, $base-color 0%, $dark-blue 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cardBody {
+  flex: 1 1 auto;
+  padding: 1rem 1rem;
+}
+
+// .spellCard {
+//   width: 60vw;
+//   padding: 1rem;
+//   color: white;
+//   border-width: 3px;
+//   border-style: solid;
+//   border-image: 
+//     linear-gradient(
+//       to bottom, 
+//       #264c5e, 
+//       #cec2ae
+//     ) 1 100%;
+// }
+
+.spell-card {
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 8px;
+  background-color: white;
+  margin: 15px 0;
+}
+
+.border-gradient {
+  border-image-source: linear-gradient(to left, $burgundy, $off-white);
+  width: 60vw;
+  padding: 1rem;
+}
+
+.white { 
+  z-index: -1;
+  height: 100vh;
+  position: sticky;
+  &:before { 
+    z-index: 1000;
+    content: '';
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60vh;
+    background-image: linear-gradient(-180deg, #FFFFFF 0%, rgba(255,255,255,0.00) 100%) }
+  &:after { 
+    z-index: 1000;
+    content: '';
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20vh;
+    background-image: linear-gradient(0deg, #EBEBEB 0%, rgba(235,235,235,0.00) 100%) }}
+
+.squares {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden }
+.square {
+  animation: squares 9.5s linear infinite;
+  align-self: flex-end;
+  width: 1em;
+  height: 1em;
+  transform: translateY(100%);
+  background: #ebebeb;  
+  &:nth-child(2) { 
+    height: 0.5em;  
+    width: 1em;   
+    animation-delay: 1s;
+    animation-duration: 17s; 
+    -webkit-filter: blur(5px) }
+  &:nth-child(3) { 
+    height: 1em;    
+    width: .5em;   
+    animation-delay: 1.5s;
+    animation-duration: 8s; 
+    -webkit-filter: blur() }
+  &:nth-child(4) { 
+    height: .0em;    
+    width: .7em; 
+    animation-delay: 0.5s;
+    -webkit-filter: blur(3px);
+    animation-duration: 13s }
+  &:nth-child(5) { 
+    height: .7em; 
+    width: 1em;   
+    animation-delay: 4s;
+    -webkit-filter: blur(2px);
+    animation-duration: 11s }
+  &:nth-child(6) { 
+    height: 1.2em;  
+    width: 1em;   
+    animation-delay: 2s;
+    -webkit-filter: blur(1px);
+    animation-duration: 9s }
+  &:nth-child(7) { 
+    height: 2em;    
+    width: 1em;   
+    -webkit-filter: blur(2.5px);
+    animation-duration: 12s }
+  &:nth-child(8) { 
+    height: 1em;    
+    width: 3em;   
+    animation-delay: 5s;
+    -webkit-filter: blur(6px);
+    animation-duration: 18s }
+  &:nth-child(9) {
+    height: 1.5em; 
+    width: 2em; 
+    -webkit-filter: blur(0.5px);
+    animation-duration: 9s }
+  &:nth-child(9) {
+    height: 3em;
+    width: 2.4em;
+    animation-delay: 6s;
+    -webkit-filter: blur(0.5px);
+    animation-duration: 12s }}
+
+@keyframes squares { 
+  from { transform: translateY(100%) rotate(-50deg) }
+  to   { transform: translateY(calc(-100vh + -100%)) rotate(20deg) }}
