@@ -30,7 +30,7 @@ export function SpellIcons(props: SpellIconsProps) {
     return (
         <>
         <div className="iconsList">
-            {props.spellData.level &&
+            {props.spellData.level && props.spellData.level != 0 &&
                 <div 
                     className="icons" 
                     data-tip 
@@ -161,9 +161,14 @@ export function SpellIcons(props: SpellIconsProps) {
             {levelTooltip &&
                 <ReactTooltip id={level} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Level</h4>
-                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
-                        {props.spellData.higher_level}
-                    </p>
+                    {props.spellData.higher_level.length > 0 &&
+                        <>
+                        <p style={{fontWeight: '700', textAlign: 'left'}}>Higher Level:</p>
+                        <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
+                            {props.spellData.higher_level}
+                        </p>
+                        </>
+                    }
                 </ReactTooltip>
             }
             {attackTooltip &&

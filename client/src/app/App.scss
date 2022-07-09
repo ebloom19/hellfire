@@ -62,20 +62,6 @@
 //     ) 1 100%;
 // }
 
-.spell-card {
-  border: 10px solid;
-  border-image-slice: 1;
-  border-width: 8px;
-  background-color: white;
-  margin: 15px 0;
-}
-
-.border-gradient {
-  border-image-source: linear-gradient(to left, $burgundy, $off-white);
-  width: 60vw;
-  padding: 1rem;
-}
-
 .white { 
   z-index: -1;
   height: 100vh;

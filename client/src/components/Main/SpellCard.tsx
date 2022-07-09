@@ -37,9 +37,9 @@ export function SpellCard(props: SpellInfoProps) {
     return (
         <>
         {spellData && props.spellIndex &&
-            <div className="spell-card border-gradient">
+            <div className="spellCard borderGradient">
                 <Card.Body>
-                    <h2 className="mb-2 text-muted h2">{spellData.name}</h2>
+                    <h2 className="spellName">{spellData.name}</h2>
                     <SpellIcons spellData={spellData} index={props.index} />
                     <div className="cardBody">
                         {

@@ -5,6 +5,7 @@ import Select from 'react-select';
 import { SpellCard } from "./SpellCard";
 import { Rings } from 'react-loader-spinner';
 import { SpellsObject } from "../../types/SpellsList";
+import '../scss/SpellData.scss';
 
 function callServer() {
     axios.get('http://localhost:8000/test', {
@@ -66,6 +67,7 @@ export function SpellsList() {
             <div style={{width: '60vw'}}>
                 <>
                 {callServer()}
+                <h2 style={{margin: '25px 0', textAlign: 'left'}}>Select your spell</h2>
                 {optionList &&
                     <Select
                         options={optionList}
@@ -80,7 +82,11 @@ export function SpellsList() {
                 </>
             </div>
             :
-            <Rings />
+                <Rings 
+                    color="#cec2ae"
+                    height="240"
+                    width="240"
+                />
         }
         {selectedSpell &&
             selectedSpell.map((s, i) => {

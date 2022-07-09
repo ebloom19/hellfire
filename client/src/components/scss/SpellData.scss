@@ -1,5 +1,28 @@
 @import "./variables";
 
+.spellCard {
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 8px;
+    background-color: white;
+    margin: 30px 0;
+  }
+  
+.borderGradient {
+    border-image-source: linear-gradient(to left, $burgundy, $off-white);
+    width: 60vw;
+    padding: 1rem;
+}
+
+.spellName {
+    color: $bague;
+    margin: 0 0 40px 0;
+}
+
+.loadingDiv {
+    color: $off-white;
+}
+
 .iconsList {
     display: flex;
     justify-content: space-evenly;

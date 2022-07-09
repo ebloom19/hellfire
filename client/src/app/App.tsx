@@ -44,7 +44,6 @@ function Home() {
   return (
     <>
       <main>
-        <h2 style={{margin: '25px 0', textAlign: 'left'}}>Select your spell</h2>
         <SpellsList/>
       </main>
     </>
