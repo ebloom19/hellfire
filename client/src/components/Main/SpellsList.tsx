@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Select from 'react-select';
-import Form from 'react-bootstrap/Form';
 import { SpellCard } from "./SpellCard";
 import { Rings } from 'react-loader-spinner';
 import { SpellsObject } from "../../types/SpellsList";
@@ -19,7 +18,7 @@ function callServer() {
 
 export function SpellsList() {
     const [spells, setSpells] = useState<SpellsObject[]>();
-    const [selectedSpell, setSelectedSpell] = useState<SelectOptionType>();
+    const [selectedSpell, setSelectedSpell] = useState<SelectOptionType[]>();
     const [loading, setLoading] = useState<boolean>(true);
 
 
@@ -37,9 +36,16 @@ export function SpellsList() {
 
     type SelectOptionType = { label: string, value: string }
 
-    const handleSelectionChange = (option: SelectOptionType | null) => {
+    // const handleSelectionChange = (option: SelectOptionType | null) => {
+    //     if (option) {
+    //         setSelectedSpell(option)
+    //     }
+    // };
+
+    const handleSelectionChange = (option: any) => {
         if (option) {
             setSelectedSpell(option)
+            console.log(option, 'ghjkl');
         }
     };
 
@@ -57,7 +63,7 @@ export function SpellsList() {
     return (
         <>
         {!loading ?
-            <div>
+            <div style={{width: '60vw'}}>
                 <>
                 {callServer()}
                 {optionList &&
@@ -68,6 +74,7 @@ export function SpellsList() {
                         onChange={handleSelectionChange}
                         styles={customStyles}
                         isSearchable={true}
+                        isMulti
                     />
                 }   
                 </>
@@ -76,7 +83,12 @@ export function SpellsList() {
             <Rings />
         }
         {selectedSpell &&
-            <SpellCard spellIndex={selectedSpell.value}/>
+            selectedSpell.map((s, i) => {
+                return (
+                    <SpellCard spellIndex={s.value} index={i} />
+                )
+            })
+
         }
         </>
     )

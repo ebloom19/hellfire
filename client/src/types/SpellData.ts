@@ -39,10 +39,12 @@
 
     export interface SpellInfoProps {
         spellIndex: string;
+        index: number;
     }
 
     export interface SpellIconsProps {
-        spellData: SpellDataObject
+        spellData: SpellDataObject;
+        index: number;
     }
 
     

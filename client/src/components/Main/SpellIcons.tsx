@@ -17,6 +17,16 @@ export function SpellIcons(props: SpellIconsProps) {
     const [durationTooltip, showDurationTooltip] = useState(true);
     const [classesTooltip, setClassesTooltip] = useState(true);
 
+    // For if multiple spells selected
+    const level = `level${props.index}`;
+    const attack = `attack${props.index}`;
+    const casting = `casting${props.index}`;
+    const concentration = `concentration${props.index}`;
+    const range = `range${props.index}`;
+    const ritual = `ritual${props.index}`;
+    const duration = `duration${props.index}`;
+    const classes = `classes${props.index}`;
+
     return (
         <>
         <div className="iconsList">
@@ -24,7 +34,7 @@ export function SpellIcons(props: SpellIconsProps) {
                 <div 
                     className="icons" 
                     data-tip 
-                    data-for='level'
+                    data-for={level}
                     onMouseEnter={() => showLevelTooltip(true)}
                     onMouseLeave={() => {
                         showLevelTooltip(false);
@@ -39,7 +49,7 @@ export function SpellIcons(props: SpellIconsProps) {
                 <div 
                     className="icons" 
                     data-tip 
-                    data-for='attack'
+                    data-for={attack}
                     onMouseEnter={() => showAttackTooltip(true)}
                     onMouseLeave={() => {
                         showAttackTooltip(false);
@@ -55,7 +65,7 @@ export function SpellIcons(props: SpellIconsProps) {
                 <div 
                     className="icons" 
                     data-tip 
-                    data-for='casting'
+                    data-for={casting}
                     onMouseEnter={() => showCastingTooltip(true)}
                     onMouseLeave={() => {
                         showCastingTooltip(false);
@@ -70,7 +80,7 @@ export function SpellIcons(props: SpellIconsProps) {
                 <div 
                     className="icons"
                     data-tip 
-                    data-for='concentration'
+                    data-for={concentration}
                     onMouseEnter={() => showConcentrationTooltip(true)}
                     onMouseLeave={() => {
                         showConcentrationTooltip(false);
@@ -85,7 +95,7 @@ export function SpellIcons(props: SpellIconsProps) {
                 <div 
                     className="icons"
                     data-tip 
-                    data-for='range'
+                    data-for={range}
                     onMouseEnter={() => showRangeTooltip(true)}
                     onMouseLeave={() => {
                         showRangeTooltip(false);
@@ -100,7 +110,7 @@ export function SpellIcons(props: SpellIconsProps) {
                 <div 
                     className="icons"
                     data-tip 
-                    data-for='ritual'
+                    data-for={ritual}
                     onMouseEnter={() => showRitualTooltip(true)}
                     onMouseLeave={() => {
                         showRitualTooltip(false);
@@ -115,7 +125,7 @@ export function SpellIcons(props: SpellIconsProps) {
                 <div 
                     className="icons"
                     data-tip 
-                    data-for='duration'
+                    data-for={duration}
                     onMouseEnter={() => showDurationTooltip(true)}
                     onMouseLeave={() => {
                         showDurationTooltip(false);
@@ -130,7 +140,7 @@ export function SpellIcons(props: SpellIconsProps) {
                 <div 
                     className="icons"
                     data-tip 
-                    data-for='classes'
+                    data-for={classes}
                     onMouseEnter={() => setClassesTooltip(true)}
                     onMouseLeave={() => {
                         setClassesTooltip(false);
@@ -149,7 +159,7 @@ export function SpellIcons(props: SpellIconsProps) {
         {/* Hidden div for tooltips */}
         <div>
             {levelTooltip &&
-                <ReactTooltip id='level' place="bottom" role='example'>
+                <ReactTooltip id={level} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Level</h4>
                     <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
                         {props.spellData.higher_level}
@@ -157,7 +167,7 @@ export function SpellIcons(props: SpellIconsProps) {
                 </ReactTooltip>
             }
             {attackTooltip &&
-                <ReactTooltip id='attack' place="bottom" role='example'>
+                <ReactTooltip id={attack} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Attack Type</h4>
                     <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
                         Different attacks, damaging Spells, and other harmful Effects deal different 
@@ -167,7 +177,7 @@ export function SpellIcons(props: SpellIconsProps) {
                 </ReactTooltip>
             }
             {castingTooltip &&
-                <ReactTooltip id='casting' place="bottom" role='example'>
+                <ReactTooltip id={casting} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Casting</h4>
                     <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
                         Most spells do have a casting time of 1 action, so a spellcaster often uses 
@@ -178,7 +188,7 @@ export function SpellIcons(props: SpellIconsProps) {
                 </ReactTooltip>
             }
             {concentrationTooltip &&
-                <ReactTooltip id='concentration' place="bottom" role='example'>
+                <ReactTooltip id={concentration} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Concentration</h4>
                     <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
                         The spell lasts as long as you concentrate on it. Concentrating to maintain a 
@@ -191,7 +201,7 @@ export function SpellIcons(props: SpellIconsProps) {
                 </ReactTooltip>
             }
             {rangeTooltip &&
-                <ReactTooltip id='range' place="bottom" role='example'>
+                <ReactTooltip id={range} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Range</h4>
                     <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
                         All powers will list a range, in one form or another. Some powers have a specific 
@@ -204,7 +214,7 @@ export function SpellIcons(props: SpellIconsProps) {
                 </ReactTooltip>
             }
             {ritualTooltip &&
-                <ReactTooltip id='ritual' place="bottom" role='example'>
+                <ReactTooltip id={ritual} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Ritual</h4>
                     <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
                         Ritual Spells in D&D 5e are spells that are able to be cast without using a spell slot. 
@@ -217,7 +227,7 @@ export function SpellIcons(props: SpellIconsProps) {
                 </ReactTooltip>
             }
             {durationTooltip &&
-                <ReactTooltip id='duration' place="bottom" role='example'>
+                <ReactTooltip id={duration} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Duration</h4>
                     <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
                         Many durations are measured in rounds, minutes, hours, or some other increment. When the 
@@ -227,7 +237,7 @@ export function SpellIcons(props: SpellIconsProps) {
                 </ReactTooltip>
             }
             {classesTooltip &&
-                <ReactTooltip id='classes' place="bottom" role='example'>
+                <ReactTooltip id={classes} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Classes</h4>
                     <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
                         Classes are the mechanical heart of characters in Dungeons and Dragons. 

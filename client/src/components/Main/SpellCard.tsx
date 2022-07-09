@@ -40,7 +40,7 @@ export function SpellCard(props: SpellInfoProps) {
             <div className="spell-card border-gradient">
                 <Card.Body>
                     <h2 className="mb-2 text-muted h2">{spellData.name}</h2>
-                    <SpellIcons spellData={spellData}/>
+                    <SpellIcons spellData={spellData} index={props.index} />
                     <div className="cardBody">
                         {
                             spellData.desc?.map((t, i) => {
