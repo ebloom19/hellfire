@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Form from 'react-bootstrap/Form';
-import { SpellCard } from "./SpellData";
+import { SpellCard } from "./SpellCard";
 import { Rings } from 'react-loader-spinner';
 import { SpellsObject } from "../../types/SpellsList";
 
@@ -34,7 +34,6 @@ export function SpellsList() {
 
     return (
         <>
-        <p>{numberOfSpells}</p>
         {!loading ?
             <div>
                 <>

@@ -44,13 +44,9 @@ function Home() {
   return (
     <>
       <main>
-        <h2>Welcome to the homepage!</h2>
-        <p>You can do this, I believe in you.</p>
+        <h2>Select your spell</h2>
         <SpellsList/>
       </main>
-      <nav>
-        <Link to="/about">About</Link>
-      </nav>
     </>
   );
 }

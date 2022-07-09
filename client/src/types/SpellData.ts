@@ -40,4 +40,8 @@
         spellIndex: string;
     }
 
+    export interface SpellIconsProps {
+        spellData: SpellDataObject
+    }
+
     
