@@ -25,7 +25,7 @@
     }
   
     &:not(:last-of-type) {
-      margin-right: 7px;
+      margin-right: 20px;
     }
 }
 
@@ -90,6 +90,7 @@
     padding: 0;
     display: flex;
     height: 100%;
+    z-index: 1;
     list-style: none;
     background-color: #fff;
     width: 100%;
@@ -100,7 +101,7 @@
 }
 
 .links-wrapper {
-    margin: 0;
+    margin: 30px;
     padding: 0;
     display: flex;
     height: 100%;

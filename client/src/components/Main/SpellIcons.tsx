@@ -147,7 +147,7 @@ export function SpellIcons(props: SpellIconsProps) {
                         setTimeout(() => setClassesTooltip(true), 50);
                     }}
                 >
-                    <FontAwesomeIcon icon={solid('binoculars')} className="mb-3"/>
+                    <FontAwesomeIcon icon={solid('book-bookmark')} className="mb-3"/>
                     <div>
                         {props.spellData.classes.map(c => {
                             return <p style={{margin: '-5px 5px 0 5px'}}>{c.name}</p>
