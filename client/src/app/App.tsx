@@ -4,7 +4,7 @@ import './App.scss';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { SpellsList } from '../components/Main';
 import { Navbar } from '../components/NavBar';
-import { Register, Login } from 'src/components/Users';
+import { Register, Login } from '../components/Users';
 
 function App() {
   return (

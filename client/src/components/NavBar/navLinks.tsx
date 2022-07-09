@@ -6,7 +6,7 @@ export function NavLinks(props: any) {
       <div className="nav-links-container">
          <ul className="links-wrapper">
             <li className="link-item">
-                <a className="link" href="#">About us</a>
+                <a className="link" href="/">Home</a>
             </li>
             <li className="link-item">
                 <a className="link" href="#">How it works</a>
