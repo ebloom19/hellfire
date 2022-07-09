@@ -67,6 +67,9 @@ export function SpellCard(props: SpellInfoProps) {
                                 // | d10 | Behavior |
                                 // |---|---|        
 
+                                // Animated Object Statistics
+                                // #####
+
                                 const text = words.join(' ');
 
                                 return (

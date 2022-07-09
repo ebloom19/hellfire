@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Form from 'react-bootstrap/Form';
+import SelectSearch from 'react-select-search';
 import { SpellCard } from "./SpellCard";
 import { Rings } from 'react-loader-spinner';
 import { SpellsObject } from "../../types/SpellsList";
@@ -32,6 +33,12 @@ export function SpellsList() {
             })
     }, []);
 
+    const options = spells?.map(s => {
+        return {name: s.name, value: s.index}
+    })
+
+    console.log(options);
+
     return (
         <>
         {!loading ?
@@ -43,6 +50,12 @@ export function SpellsList() {
                     })}
                 </Form.Select>
                 {callServer()}
+                {options &&
+                    <SelectSearch options={options} placeholder="Choose your language" />
+                }
+
+
+
                 </>
             </div>
             :
