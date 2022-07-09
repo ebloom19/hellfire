@@ -1,9 +1,24 @@
 @import "./variables";
 
+.iconsList {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 700px;
+    margin: 40px 0 0 0;
+}
+
 .icons {
     color: $dark-blue;
     display: flex;
     flex-direction: column;
+    font-size: 20px;
+}
+
+.iconsRow {
+    color: $dark-blue;
+    display: flex;
     font-size: 20px;
 }
 
@@ -19,4 +34,9 @@
     color: black;
     text-align: left;
     font-size: 13px;
+}
+
+.boldText {
+    color: $dark-blue;
+    font-size: 20px;
 }

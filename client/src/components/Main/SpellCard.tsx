@@ -6,6 +6,7 @@ import { SpellIcons } from "./SpellIcons";
 import { SpellDataObject, SpellInfoProps } from "../../types/SpellData";
 import Card from 'react-bootstrap/Card';
 import ReactHtmlParser from 'react-html-parser';
+import converter from 'number-to-words';
 import '../scss/SpellData.scss';
 
 export function SpellCard(props: SpellInfoProps) {
@@ -30,12 +31,15 @@ export function SpellCard(props: SpellInfoProps) {
     // Control Water ***
 
 
+    // 3d6 = roll three 6-sided dice
+
+
     return (
         <>
         {spellData && props.spellIndex &&
             <div className="spell-card border-gradient">
                 <Card.Body>
-                    <Card.Title className="mb-2 text-muted h2">{spellData.name}</Card.Title>
+                    <h2 className="mb-2 text-muted h2">{spellData.name}</h2>
                     <SpellIcons spellData={spellData}/>
                     <div className="cardBody">
                         {
@@ -43,7 +47,19 @@ export function SpellCard(props: SpellInfoProps) {
 
                                 let words = t.split(' ').map(w => {
                                     return (
-                                        w.includes('***') ? `<b>${w.replace('***', '').replace('.***', '')}</b>` : w
+                                        w.includes('***') ? 
+                                            `<b class="boldText">${w.replace('***', '').replace('.***', '').replace('.', '')}</b>` : 
+                                            w
+                                    )
+                                })
+
+                                words = words.map(w => {
+                                    const hasNumber = /\d/;
+
+                                    return (
+                                        hasNumber.test(w) && w.includes('d') && !w.includes('r') && w.split('').length < 6 && w.split('d')[0] ?
+                                            `<b>${w}</b> (roll ${Number(w.split('d')[0]) && w.split('d')[0]} ${Number(w.split('d')[1]) && converter.toWords(w.split('d')[1])}-sided dice)` :
+                                            w
                                     )
                                 })
 
@@ -52,8 +68,6 @@ export function SpellCard(props: SpellInfoProps) {
                                 // |---|---|        
 
                                 const text = words.join(' ');
-
-                                console.log(text);
 
                                 return (
                                     text.startsWith("-") ?
