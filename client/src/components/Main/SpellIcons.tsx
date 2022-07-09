@@ -9,12 +9,13 @@ import '../scss/SpellData.scss';
 
 export function SpellIcons(props: SpellIconsProps) {
     const [levelTooltip, showLevelTooltip] = useState(true);
+    const [attackTooltip, showAttackTooltip] = useState(true);
     const [castingTooltip, showCastingTooltip] = useState(true);
-    const [classesTooltip, setClassesTooltip] = useState(true);
     const [concentrationTooltip, showConcentrationTooltip] = useState(true);
     const [rangeTooltip, showRangeTooltip] = useState(true);
     const [ritualTooltip, showRitualTooltip] = useState(true);
     const [durationTooltip, showDurationTooltip] = useState(true);
+    const [classesTooltip, setClassesTooltip] = useState(true);
 
     return (
         <>
@@ -30,23 +31,26 @@ export function SpellIcons(props: SpellIconsProps) {
                         setTimeout(() => showLevelTooltip(true), 50);
                     }}
                 >
-                    <FontAwesomeIcon icon={solid('arrow-up-9-1')} />
+                    <FontAwesomeIcon icon={solid('arrow-up-9-1')} className="mb-2"/>
                     <p>{props.spellData.level}</p>
                 </div>
             }
-            {/* <div 
-                className="icons" 
-                data-tip 
-                data-for='attack'
-                onMouseEnter={() => showLevelTooltip(true)}
-                onMouseLeave={() => {
-                    showLevelTooltip(false);
-                    setTimeout(() => showLevelTooltip(true), 50);
-                }}
-            >
-                <FontAwesomeIcon icon={solid('arrow-up-9-1')} />
-                <p>{props.spellData.at}</p>
-            </div> */}
+            {props.spellData.attack_type &&
+                <div 
+                    className="icons" 
+                    data-tip 
+                    data-for='attack'
+                    onMouseEnter={() => showAttackTooltip(true)}
+                    onMouseLeave={() => {
+                        showAttackTooltip(false);
+                        setTimeout(() => showAttackTooltip(true), 50);
+                    }}
+                >
+                    <FontAwesomeIcon icon={solid('skull')} className="mb-2"/>
+                    <p>{props.spellData.attack_type.charAt(0).toUpperCase() + props.spellData.attack_type.slice(1)}</p>
+                    
+                </div>
+            }
             {props.spellData.casting_time &&
                 <div 
                     className="icons" 
@@ -58,7 +62,7 @@ export function SpellIcons(props: SpellIconsProps) {
                         setTimeout(() => showCastingTooltip(true), 50);
                     }}
                 >
-                    <FontAwesomeIcon icon={solid('wand-magic')} />
+                    <FontAwesomeIcon icon={solid('wand-magic')} className="mb-2"/>
                     <p>{props.spellData?.casting_time}</p>
                 </div>
             }
@@ -73,7 +77,7 @@ export function SpellIcons(props: SpellIconsProps) {
                         setTimeout(() => showConcentrationTooltip(true), 50);
                     }}
                 >
-                    <FontAwesomeIcon icon={solid('brain')} />
+                    <FontAwesomeIcon icon={solid('brain')} className="mb-2"/>
                     {props.spellData.concentration ? <FontAwesomeIcon className="mt-2" icon={solid('check')} /> : <FontAwesomeIcon className="mt-2" icon={solid('xmark')} />}
                 </div>
             }
@@ -88,7 +92,7 @@ export function SpellIcons(props: SpellIconsProps) {
                         setTimeout(() => showRangeTooltip(true), 50);
                     }}
                 >
-                    <FontAwesomeIcon icon={solid('maximize')} />
+                    <FontAwesomeIcon icon={solid('maximize')} className="mb-2"/>
                     <p>{props.spellData.range}</p>
                 </div>
             }
@@ -103,7 +107,7 @@ export function SpellIcons(props: SpellIconsProps) {
                         setTimeout(() => showRitualTooltip(true), 50);
                     }}
                 >
-                    <FontAwesomeIcon icon={solid('dragon')} />
+                    <FontAwesomeIcon icon={solid('dragon')} className="mb-2"/>
                     {props.spellData.ritual ? <FontAwesomeIcon className="mt-2" icon={solid('check')} /> : <FontAwesomeIcon className="mt-2" icon={solid('xmark')} />}
                 </div>
             }
@@ -118,7 +122,7 @@ export function SpellIcons(props: SpellIconsProps) {
                         setTimeout(() => showDurationTooltip(true), 50);
                     }}
                 >
-                    <FontAwesomeIcon icon={solid('stopwatch')} />
+                    <FontAwesomeIcon icon={solid('stopwatch')} className="mb-2"/>
                     <p>{props.spellData.duration}</p>
                 </div>
             }
@@ -133,7 +137,7 @@ export function SpellIcons(props: SpellIconsProps) {
                         setTimeout(() => setClassesTooltip(true), 50);
                     }}
                 >
-                    <FontAwesomeIcon icon={solid('binoculars')} />
+                    <FontAwesomeIcon icon={solid('binoculars')} className="mb-3"/>
                     <div>
                         {props.spellData.classes.map(c => {
                             return <p style={{margin: '-5px 5px 0 5px'}}>{c.name}</p>
@@ -142,12 +146,24 @@ export function SpellIcons(props: SpellIconsProps) {
                 </div>
             }
         </div>
-        // Hidden div for tooltips
+        {/* Hidden div for tooltips */}
         <div>
             {levelTooltip &&
                 <ReactTooltip id='level' place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Level</h4>
-                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>{props.spellData.higher_level}</p>
+                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
+                        {props.spellData.higher_level}
+                    </p>
+                </ReactTooltip>
+            }
+            {attackTooltip &&
+                <ReactTooltip id='attack' place="bottom" role='example'>
+                    <h4 style={{textAlign: 'left'}}>Attack Type</h4>
+                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
+                        Different attacks, damaging Spells, and other harmful Effects deal different 
+                        types of damage. Damage Types have no rules of their own, but other rules, 
+                        such as damage Resistance, rely on the types.
+                    </p>
                 </ReactTooltip>
             }
             {castingTooltip &&
@@ -158,18 +174,6 @@ export function SpellIcons(props: SpellIconsProps) {
                         his or her action in combat to cast such a spell. So, if you cast a spell 
                         with a casting time of 1 Action, you resolve it the exact same way that 
                         you would resolve an attack.
-                    </p>
-                </ReactTooltip>
-            }
-            {classesTooltip &&
-                <ReactTooltip id='classes' place="bottom" role='example'>
-                    <h4 style={{textAlign: 'left'}}>Classes</h4>
-                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
-                        Classes are the mechanical heart of characters in Dungeons and Dragons. 
-                        While your race and background carry equal weight in who your character is, 
-                        your class defines what your character does. Understanding how to build 
-                        and play a class effectively is the most important part of building an 
-                        effective DnD character.
                     </p>
                 </ReactTooltip>
             }
@@ -219,6 +223,18 @@ export function SpellIcons(props: SpellIconsProps) {
                         Many durations are measured in rounds, minutes, hours, or some other increment. When the 
                         time is up, the magic goes away and the spell ends. If a spell’s duration is variable the 
                         duration is rolled secretly (the caster doesn’t know how long the spell will last).
+                    </p>
+                </ReactTooltip>
+            }
+            {classesTooltip &&
+                <ReactTooltip id='classes' place="bottom" role='example'>
+                    <h4 style={{textAlign: 'left'}}>Classes</h4>
+                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
+                        Classes are the mechanical heart of characters in Dungeons and Dragons. 
+                        While your race and background carry equal weight in who your character is, 
+                        your class defines what your character does. Understanding how to build 
+                        and play a class effectively is the most important part of building an 
+                        effective DnD character.
                     </p>
                 </ReactTooltip>
             }

@@ -15,8 +15,8 @@ export function Navbar(props: any) {
   return (
       <div className="navbar-container">
         <div style={{display: 'flex', marginLeft: '30px'}}>
-          <img src={logo} alt="Hellfire Club" style={{width: '100px'}}/>
-          <img src={face} alt="Hellfire Devil Face" style={{width: '70px'}}/>
+          <img src={logo} alt="Hellfire Club" style={{width: '120px'}}/>
+          <img src={face} alt="Hellfire Devil Face" style={{width: '90px'}}/>
         </div>
         <div className="middle-section">
             {/* {!isMobile && <NavLinks />} */}

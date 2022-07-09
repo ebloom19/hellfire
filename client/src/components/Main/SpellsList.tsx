@@ -59,25 +59,17 @@ export function SpellsList() {
         {!loading ?
             <div>
                 <>
-                {/* <Form.Select aria-label="Default select example" size="lg" onChange={(e) => setSelectedSpell(e.target.value)}>
-                    {spells?.map((s, i) => {
-                        return <option value={s.index} key={i}>{s.name}</option>
-                    })}
-                </Form.Select> */}
                 {callServer()}
                 {optionList &&
                     <Select
-                    options={optionList}
-                    placeholder="Select a spell"
-                    value={selectedSpell}
-                    onChange={handleSelectionChange}
-                    styles={customStyles}
-                    isSearchable={true}
+                        options={optionList}
+                        placeholder="Select a spell"
+                        value={selectedSpell}
+                        onChange={handleSelectionChange}
+                        styles={customStyles}
+                        isSearchable={true}
                     />
                 }   
-
-
-
                 </>
             </div>
             :

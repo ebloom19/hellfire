@@ -30,6 +30,7 @@
         concentration: boolean;
         casting_time: string;
         level: number;
+        attack_type: string;
         school: School;
         classes: Class[];
         subclasses: Subclass[];
