@@ -44,7 +44,7 @@ function Home() {
   return (
     <>
       <main>
-        <h2>Select your spell</h2>
+        <h2 className="my-4">Select your spell</h2>
         <SpellsList/>
       </main>
     </>
