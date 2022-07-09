@@ -30,6 +30,19 @@ export function SpellIcons(props: SpellIconsProps) {
                     <FontAwesomeIcon icon={solid('arrow-up-9-1')} />
                     <p>{props.spellData.level}</p>
                 </div>
+                {/* <div 
+                    className="icons" 
+                    data-tip 
+                    data-for='attack'
+                    onMouseEnter={() => showLevelTooltip(true)}
+                    onMouseLeave={() => {
+                        showLevelTooltip(false);
+                        setTimeout(() => showLevelTooltip(true), 50);
+                    }}
+                >
+                    <FontAwesomeIcon icon={solid('arrow-up-9-1')} />
+                    <p>{props.spellData.at}</p>
+                </div> */}
                 <div 
                     className="icons" 
                     data-tip 
@@ -100,6 +113,7 @@ export function SpellIcons(props: SpellIconsProps) {
                     {levelTooltip &&
                         <ReactTooltip id='level' role='example'>
                             <p>Level Info</p>
+                            <p style={{maxWidth: '150px', fontWeight: '600'}}>{props.spellData.higher_level}</p>
                         </ReactTooltip>
                     }
                     {castingTooltip &&
