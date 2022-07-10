@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Accessibility } from "./accessibility";
 import { MenuToggle } from "./menuToggle";
+import { Link } from "react-router-dom";
 import '../scss/NavBar.scss';
 
 export function MobileNavLinks(props: any) {
   const [isOpen, setOpen] = useState(false);
+
+  useEffect(() => {
+    if(isOpen) {
+        document.body.style.overflow = "hidden";
+    } else {
+        document.body.style.overflow = "";
+    }
+  }, [isOpen])
 
   return (
     <div className="nav-links-container">
@@ -12,19 +21,16 @@ export function MobileNavLinks(props: any) {
         {isOpen && (
             <ul className="links-wrapper-mobile">
                 <li className="link-item-mobile">
-                    <a className="link" href="#">About us</a>
+                    <Link className="link" to="/"onClick={() => setOpen(false)}>Home</Link>
                 </li>
                 <li className="link-item-mobile">
-                    <a className="link" href="#">How it works</a>
+                    <Link className="link" to="/" onClick={() => setOpen(false)}>Spells</Link>
                 </li>
-                <li className="link-item-mobile">
-                    <a className="link" href="#">Spells</a>
-                </li>
-                <li className="link-item-mobile">
-                    <a className="link" href="#">Favorites</a>
-                </li>
-                <div className="marginer"/>
-                <Accessibility />
+                {/* <div className="marginer"/> */}
+                <div className="accessibility-container">
+                    <Link className="register-button" to="/favorites" onClick={() => setOpen(false)}>Favorites</Link>
+                </div>
+                {/* <Accessibility /> */}
             </ul>
         )}
     </div>

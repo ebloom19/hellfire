@@ -76,3 +76,23 @@
     transform: scale(1.5);
 }
 
+@media only screen and (max-width: 768px) {
+    .icons {
+        font-size: 12px;
+        margin: 2px 5px;
+    }
+
+    .borderGradient {
+        width: 80vw;
+    }
+
+    .cardBody {
+        font-size: 11px;
+    }
+
+    .savedFavorite {
+        top: 1.5rem;
+        right: 1.5rem;
+    }
+}
+

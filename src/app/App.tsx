@@ -15,7 +15,7 @@ export const App: React.FC<{}> = () => {
       <Navbar/>
       <header className="App-header">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<SearchContainer />} />
           <Route path="/favorites" element={<FavoriteContainer/>} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
@@ -26,16 +26,15 @@ export const App: React.FC<{}> = () => {
   )
 }
 
-function Home() {
+// function Home() {
 
-
-  return (
-    <>
-      <main>
-        <SearchContainer />
-      </main>
-    </>
-  );
-}
+//   return (
+//     <>
+//       <main>
+//         <SearchContainer />
+//       </main>
+//     </>
+//   );
+// }
 
 export default App;
