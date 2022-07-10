@@ -113,7 +113,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-* npm (to install yarn)
+* Install [node and npm](https://nodejs.org/en/download/)
   ```sh
   npm install npm@latest -g
   ```
