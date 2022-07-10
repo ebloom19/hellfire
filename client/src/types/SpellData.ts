@@ -41,7 +41,9 @@
         spellIndex: string;
         index: number;
         idx?: number;
-        handleDelete?: (idx: number) => void;
+        handleDelete: (idx: number) => void;
+        handleSave?: (name: string) => void;
+        favoriteList: string[];
     }
 
     export interface SpellIconsProps {

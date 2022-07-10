@@ -6,6 +6,7 @@ import { SpellsList } from '../components/Main';
 import { Navbar } from '../components/NavBar';
 import { Register, Login } from '../components/Users';
 import FavoriteContainer from 'src/containers/FavoriteContainer';
+import SearchContainer from 'src/containers/SearchContainer';
 
 export const App: React.FC<{}> = () => {
   return (
@@ -31,7 +32,7 @@ function Home() {
   return (
     <>
       <main>
-        <SpellsList/>
+        <SearchContainer />
       </main>
     </>
   );

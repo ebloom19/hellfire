@@ -7,21 +7,16 @@ import { Rings } from 'react-loader-spinner';
 import { SpellsObject } from "../../types/SpellsList";
 import '../scss/SpellData.scss';
 
-function callServer() {
-    axios.get('http://localhost:8000/test', {
-      params: {
-        table: 'sample',
-      },
-    }).then((response) => {
-      console.log(response.data);
-    });
+interface SpellsListProps {
+    handleDelete: (idx: number) => void;
+    handleSave: (name: string) => void;
+    favoriteList: string[];
 }
 
-export function SpellsList() {
+export function SpellsList(props: SpellsListProps) {
     const [spells, setSpells] = useState<SpellsObject[]>();
     const [selectedSpell, setSelectedSpell] = useState<SelectOptionType[]>();
     const [loading, setLoading] = useState<boolean>(true);
-
 
     useEffect(() => {
         axios.get('https://www.dnd5eapi.co/api/spells')
@@ -32,22 +27,15 @@ export function SpellsList() {
     }, []);
 
     const optionList = spells?.map(s => {
-        return {value: s.index, label: s.name}
-    })
+        return {value: s.index, label: s.name};
+    });
 
-    type SelectOptionType = { label: string, value: string }
-
-    // const handleSelectionChange = (option: SelectOptionType | null) => {
-    //     if (option) {
-    //         setSelectedSpell(option)
-    //     }
-    // };
+    type SelectOptionType = { label: string, value: string };
 
     const handleSelectionChange = (option: any) => {
         if (option) {
-            setSelectedSpell(option)
-            console.log(option, 'ghjkl');
-        }
+            setSelectedSpell(option);
+        };
     };
 
     const customStyles = {
@@ -66,7 +54,6 @@ export function SpellsList() {
         {!loading ?
             <div style={{width: '60vw'}}>
                 <>
-                {callServer()}
                 <h2 style={{margin: '25px 0', textAlign: 'left'}}>Select your spell</h2>
                 {optionList &&
                     <Select
@@ -91,7 +78,7 @@ export function SpellsList() {
         {selectedSpell &&
             selectedSpell.map((s, i) => {
                 return (
-                    <SpellCard spellIndex={s.value} index={i} />
+                    <SpellCard spellIndex={s.value} index={i} favoriteList={props.favoriteList} handleDelete={props.handleDelete} handleSave={props.handleSave} />
                 )
             })
 

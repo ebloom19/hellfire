@@ -4,6 +4,7 @@ import { Dispatch } from "redux";
 import * as MyTypes from "MyTypes";
 import { actionTypes } from "src/actions/actions";
 import { FavoriteItem } from "../components/Main";
+import { SpellsList } from "../components/Main";
 
 interface FavoriteContainerState {
     favoriteInput: string;
@@ -16,16 +17,13 @@ interface FavoriteContainerProps {
     deleteFavorite: (idx: number) => object;
 }
 
-class FavoriteContainer extends React.Component<FavoriteContainerProps, FavoriteContainerState> {
+class SearchContainer extends React.Component<FavoriteContainerProps, FavoriteContainerState> {
     constructor(props: any) {
         super(props);
     }
 
-    handleButtonClick = () => {
-        this.props.addFavorite(this.state.favoriteInput);
-        this.setState({
-            favoriteInput: ""
-        });
+    handleButtonClick = (name: string) => {
+        this.props.addFavorite(name);
     };
 
     handleDeleteButtonClick = (idx: number) => {
@@ -34,21 +32,8 @@ class FavoriteContainer extends React.Component<FavoriteContainerProps, Favorite
     };
 
     render() {
-        let favoriteJSX: JSX.Element[] | JSX.Element;
-        if (!this.props.favoriteList.length) {
-            favoriteJSX = <p>No favorite spells found!</p>;
-        } else {
-            favoriteJSX = this.props.favoriteList.map((item, idx) => {
-                return (
-                    <FavoriteItem item={item} key={idx} idx={idx} handleDelete={this.handleDeleteButtonClick} favoriteList={this.props.favoriteList} />
-                );
-            });
-        }
-
         return (
-            <div>
-                {favoriteJSX}
-            </div>
+            <SpellsList favoriteList={this.props.favoriteList} handleDelete={this.handleDeleteButtonClick} handleSave={this.handleButtonClick}/>
         );
     }
 }
@@ -68,4 +53,4 @@ const MapDispatchToProps = (dispatch: Dispatch<MyTypes.RootAction>) => ({
 export default connect(
     MapStateToProps,
     MapDispatchToProps
-)(FavoriteContainer);
+)(SearchContainer);

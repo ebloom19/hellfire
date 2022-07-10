@@ -8,7 +8,7 @@ import Card from 'react-bootstrap/Card';
 import ReactHtmlParser from 'react-html-parser';
 import converter from 'number-to-words';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro';
 import '../scss/SpellData.scss';
 
 export function SpellCard(props: SpellCardProps) {
@@ -21,6 +21,11 @@ export function SpellCard(props: SpellCardProps) {
                 setSpellData(response.data);
             })
     }, [props.spellIndex]);
+
+    
+    useEffect(() => {        
+        console.log('TETS ', props.favoriteList.indexOf(props.spellIndex));
+    }, [props.favoriteList])
 
     // Confusion
     // | d10 | Behavior |
@@ -36,14 +41,14 @@ export function SpellCard(props: SpellCardProps) {
     // 3d6 = roll three 6-sided dice
 
 
+
     return (
         <>
         {spellData && props.spellIndex &&
             <div className="spellCard borderGradient">
                 <Card.Body>
                     <h2 className="spellName">{spellData.name}</h2>
-                    {props.idx && props.handleDelete &&
-                        // <button onClick={() => props.idx && props.handleDelete && props.handleDelete(props.idx)}>X</button>
+                    {props.idx && props.handleDelete && props.favoriteList?.includes(props.spellIndex) &&
                         <FontAwesomeIcon 
                             icon={solid('heart')} 
                             className="savedFavorite" 
@@ -51,6 +56,22 @@ export function SpellCard(props: SpellCardProps) {
                                 props.idx && props.handleDelete && 
                                 props.handleDelete(props.idx)
                             }/>
+                    }
+                    {props.spellIndex && props.handleSave && !props.favoriteList?.includes(props.spellIndex) ?
+                        <FontAwesomeIcon 
+                            icon={regular('heart')} 
+                            className="savedFavorite" 
+                            onClick={() => 
+                                props.handleSave && props.spellIndex &&
+                                props.handleSave(props.spellIndex)
+                            }/>:
+                        <FontAwesomeIcon 
+                        icon={solid('heart')} 
+                        className="savedFavorite" 
+                        onClick={() => 
+                            props.idx && props.handleDelete && props.favoriteList &&
+                            props.handleDelete(props.favoriteList.indexOf(props.spellIndex))
+                        }/>
                     }
                     <SpellIcons spellData={spellData} index={props.index} />
                     <div className="cardBody">
