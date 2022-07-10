@@ -41,21 +41,16 @@ export function SpellCard(props: SpellCardProps) {
 
     // Control Water ***
 
-
-    // 3d6 = roll three 6-sided dice
-
-    console.log('LLL ', props.index);
-
     return (
         <>
         {spellData && props.spellIndex &&
-            <div className="spellCard borderGradient">
+            <div className="spell-card border-gradient">
                 <Card.Body>
-                    <h2 className="spellName">{spellData.name}</h2>
+                    <h2 className="spell-name">{spellData.name}</h2>
                     {props.idx && props.handleDelete && props.favoriteList?.includes(props.spellIndex) &&
                         <FontAwesomeIcon 
                             icon={solid('heart')} 
-                            className="savedFavorite" 
+                            className="favorite" 
                             onClick={() => 
                                 props.idx && props.handleDelete && 
                                 props.handleDelete(props.idx)
@@ -64,47 +59,50 @@ export function SpellCard(props: SpellCardProps) {
                     {props.spellIndex && props.handleSave && !props.favoriteList?.includes(props.spellIndex) ?
                         <FontAwesomeIcon 
                             icon={regular('heart')} 
-                            className="savedFavorite" 
+                            className="favorite" 
                             onClick={() => 
                                 props.handleSave && props.spellIndex &&
                                 props.handleSave(props.spellIndex)
                             }/>:
                         <FontAwesomeIcon 
                         icon={solid('heart')} 
-                        className="savedFavorite" 
+                        className="favorite" 
                         onClick={() => 
                             props.idx && props.handleDelete && props.favoriteList &&
                             props.handleDelete(props.favoriteList.indexOf(props.spellIndex))
                         }/>
                     }
                     {props.index == 0 && !isMobile &&
-                        <p className="moreInfo">Hover over the icons below to learn more..</p>
+                        <p className="more-info">Hover over the icons below for more info..</p>
                     }
                     {props.index == 0 && isMobile &&
-                        <p className="moreInfo">Click on the icons below to learn more..</p>
+                        <p className="more-info">Click on the icons below for more info..</p>
                     }
                     <SpellIcons spellData={spellData} index={props.index} />
-                    <div className="cardBody">
+                    <div className="card-body">
                         {
                             spellData.desc?.map((t, i) => {
 
+                                // Filter text body for -> ***Text*** = Bold Blue Text
                                 let words = t.split(' ').map(w => {
                                     return (
                                         w.includes('***') ? 
-                                            `<b class="boldText">${w.replace('***', '').replace('.***', '').replace('.', '')}</b>` : 
+                                            `<b class="bold-text">
+                                                ${w.replace('***', '').replace('.***', '').replace('.', '')}
+                                            </b>` : 
                                             w
-                                    )
-                                })
+                                    );
+                                });
 
+                                // Filter text body for -> 3d6 = roll three 6-sided dice
                                 words = words.map(w => {
                                     const hasNumber = /\d/;
-
                                     return (
                                         hasNumber.test(w) && w.includes('d') && !w.includes('r') && w.split('').length < 6 && w.split('d')[0] ?
                                             `<b>${w}</b> (roll ${Number(w.split('d')[0]) && w.split('d')[0]} ${Number(w.split('d')[1]) && converter.toWords(w.split('d')[1])}-sided dice)` :
                                             w
-                                    )
-                                })
+                                    );
+                                });
 
                                 // filter for Confusion structure 
                                 // | d10 | Behavior |
@@ -117,8 +115,12 @@ export function SpellCard(props: SpellCardProps) {
 
                                 return (
                                     text.startsWith("-") ?
-                                        <li className="listItem">{ text.replace('-', '') }</li> :
-                                        <><p className="text-sm-left my-2">{ ReactHtmlParser(text) }</p></>
+                                        <li className="list-item">
+                                            { text.replace('-', '') }
+                                        </li> :
+                                        <p className="text-sm-left my-2">
+                                            { ReactHtmlParser(text) }
+                                        </p>
                                 );
                             })
                         }

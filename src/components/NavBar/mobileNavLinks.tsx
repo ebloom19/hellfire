@@ -7,6 +7,7 @@ import '../scss/NavBar.scss';
 export function MobileNavLinks(props: any) {
   const [isOpen, setOpen] = useState(false);
 
+  // Stop scroll ability if nav bar is open
   useEffect(() => {
     if(isOpen) {
         document.body.style.overflow = "hidden";
@@ -21,14 +22,31 @@ export function MobileNavLinks(props: any) {
         {isOpen && (
             <ul className="links-wrapper-mobile">
                 <li className="link-item-mobile">
-                    <Link className="link" to="/"onClick={() => setOpen(false)}>Home</Link>
+                    <Link 
+                        className="link" 
+                        to="/"
+                        onClick={() => setOpen(false)}
+                    >
+                        Home
+                    </Link>
                 </li>
                 <li className="link-item-mobile">
-                    <Link className="link" to="/" onClick={() => setOpen(false)}>Spells</Link>
+                    <Link 
+                        className="link" 
+                        to="/" 
+                        onClick={() => setOpen(false)}
+                    >
+                        Spells
+                    </Link>
                 </li>
-                {/* <div className="marginer"/> */}
-                <div className="accessibility-container">
-                    <Link className="register-button" to="/favorites" onClick={() => setOpen(false)}>Favorites</Link>
+                <div className="accessibility-container-mobile">
+                    <Link 
+                        className="register-button" 
+                        to="/favorites" 
+                        onClick={() => setOpen(false)}
+                    >
+                        Favorites
+                    </Link>
                 </div>
             </ul>
         )}

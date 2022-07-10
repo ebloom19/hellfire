@@ -26,15 +26,4 @@ export const App: React.FC<{}> = () => {
   )
 }
 
-// function Home() {
-
-//   return (
-//     <>
-//       <main>
-//         <SearchContainer />
-//       </main>
-//     </>
-//   );
-// }
-
 export default App;

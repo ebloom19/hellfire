@@ -31,8 +31,8 @@ export function SpellIcons(props: SpellIconsProps) {
 
     return (
         <>
-        <div className="iconsList">
-            {props.spellData.level && props.spellData.level != 0 &&
+        <div className="icons-list">
+            {props.spellData.level && props.spellData.level >= 0 &&
                 <div 
                     className="icons" 
                     data-tip 
@@ -139,7 +139,10 @@ export function SpellIcons(props: SpellIconsProps) {
                     }}
                 >
                     <FontAwesomeIcon icon={solid('dragon')} className="mb-2"/>
-                    {props.spellData.ritual ? <FontAwesomeIcon className="mt-2" icon={solid('check')} /> : <FontAwesomeIcon className="mt-2" icon={solid('xmark')} />}
+                    {props.spellData.ritual ? 
+                        <FontAwesomeIcon className="mt-2" icon={solid('check')} /> : 
+                        <FontAwesomeIcon className="mt-2" icon={solid('xmark')} />
+                    }
                 </div>
             }
             {props.spellData.duration &&
@@ -182,7 +185,7 @@ export function SpellIcons(props: SpellIconsProps) {
             {levelTooltip &&
                 <ReactTooltip id={level} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Level</h4>
-                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
+                    <p className="tooltip-text">
                         Every spell has a level from 0 to 9. A spell’s level is a general indicator of how 
                         powerful it is, with the lowly (but still impressive) Magic Missile at 1st Level and 
                         the earth--shaking wish at 9th. Cantrips—simple but powerful Spells that Characters 
@@ -194,7 +197,7 @@ export function SpellIcons(props: SpellIconsProps) {
                     {props.spellData.higher_level.length > 0 &&
                         <>
                         <p style={{fontWeight: '700', textAlign: 'left'}}>Higher Level:</p>
-                        <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
+                        <p className="tooltip-text">
                             {props.spellData.higher_level}
                         </p>
                         </>
@@ -204,7 +207,7 @@ export function SpellIcons(props: SpellIconsProps) {
             {attackTooltip &&
                 <ReactTooltip id={attack} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Attack Type</h4>
-                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
+                    <p className="tooltip-text">
                         Different attacks, damaging Spells, and other harmful Effects deal different 
                         types of damage. Damage Types have no rules of their own, but other rules, 
                         such as damage Resistance, rely on the types.
@@ -214,7 +217,7 @@ export function SpellIcons(props: SpellIconsProps) {
             {castingTooltip &&
                 <ReactTooltip id={casting} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Casting</h4>
-                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
+                    <p className="tooltip-text">
                         Most spells do have a casting time of 1 action, so a spellcaster often uses 
                         his or her action in combat to cast such a spell. So, if you cast a spell 
                         with a casting time of 1 Action, you resolve it the exact same way that 
@@ -225,7 +228,7 @@ export function SpellIcons(props: SpellIconsProps) {
             {componentsTooltip &&
                 <ReactTooltip id={components} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Components</h4>
-                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
+                    <p className="tooltip-text">
                         A spell’s Components are the physical requirements you must meet in order to cast 
                         it. Each spell’s description indicates whether it requires Verbal (V), Somatic (S), 
                         or Material (M) Components. If you can’t provide one or more of a spell’s Components, 
@@ -236,7 +239,7 @@ export function SpellIcons(props: SpellIconsProps) {
             {concentrationTooltip &&
                 <ReactTooltip id={concentration} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Concentration</h4>
-                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
+                    <p className="tooltip-text">
                         The spell lasts as long as you concentrate on it. Concentrating to maintain a 
                         spell is a standard action that does not provoke attacks of opportunity. 
                         Anything that could break your concentration when casting a spell can also 
@@ -249,7 +252,7 @@ export function SpellIcons(props: SpellIconsProps) {
             {rangeTooltip &&
                 <ReactTooltip id={range} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Range</h4>
-                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
+                    <p className="tooltip-text">
                         All powers will list a range, in one form or another. Some powers have a specific 
                         numerical value, denoting the distance in squares that the attack can reach, typically 
                         starting from the characters square. Other attacks, usually with the weapon keyword, 
@@ -262,7 +265,7 @@ export function SpellIcons(props: SpellIconsProps) {
             {ritualTooltip &&
                 <ReactTooltip id={ritual} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Ritual</h4>
-                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
+                    <p className="tooltip-text">
                         Certain Spells have a Special tag: ritual. Such a spell can be cast following the normal 
                         rules for Spellcasting, or the spell can be cast as a ritual. The ritual version of a 
                         spell takes 10 minutes longer to cast than normal. It also doesn’t expend a spell slot, 
@@ -277,7 +280,7 @@ export function SpellIcons(props: SpellIconsProps) {
             {durationTooltip &&
                 <ReactTooltip id={duration} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Duration</h4>
-                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
+                    <p className="tooltip-text">
                         Many durations are measured in rounds, minutes, hours, or some other increment. When the 
                         time is up, the magic goes away and the spell ends. If a spell’s duration is variable the 
                         duration is rolled secretly (the caster doesn’t know how long the spell will last).
@@ -287,7 +290,7 @@ export function SpellIcons(props: SpellIconsProps) {
             {classesTooltip &&
                 <ReactTooltip id={classes} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Classes</h4>
-                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
+                    <p className="tooltip-text">
                         Classes are the mechanical heart of characters in Dungeons and Dragons. 
                         While your race and background carry equal weight in who your character is, 
                         your class defines what your character does. Understanding how to build 

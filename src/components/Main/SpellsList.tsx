@@ -5,19 +5,16 @@ import Select from 'react-select';
 import { SpellCard } from "./SpellCard";
 import { Rings } from 'react-loader-spinner';
 import { SpellsObject } from "../../types/SpellsList";
+import { SpellsListProps } from "../../types/SpellData";
 import '../scss/SpellData.scss';
-
-interface SpellsListProps {
-    handleDelete: (idx: number) => void;
-    handleSave: (name: string) => void;
-    favoriteList: string[];
-}
 
 export function SpellsList(props: SpellsListProps) {
     const [spells, setSpells] = useState<SpellsObject[]>();
     const [selectedSpell, setSelectedSpell] = useState<SelectOptionType[]>();
     const [loading, setLoading] = useState<boolean>(true);
 
+    type SelectOptionType = { label: string, value: string };
+    
     useEffect(() => {
         axios.get('https://www.dnd5eapi.co/api/spells')
             .then(response => {
@@ -30,7 +27,6 @@ export function SpellsList(props: SpellsListProps) {
         return {value: s.index, label: s.name};
     });
 
-    type SelectOptionType = { label: string, value: string };
 
     const handleSelectionChange = (option: any) => {
         if (option) {
@@ -39,13 +35,11 @@ export function SpellsList(props: SpellsListProps) {
     };
 
     const customStyles = {
-        option: (provided: any, state: any) => ({
-        //   ...provided,
+        option: (state: any) => ({
           borderBottom: '2px solid #264c5e',
           color: state.isSelected ? 'black' : '#264c5e',
           padding: 20,
-        }),
-
+        })
       }
       
       
@@ -54,7 +48,9 @@ export function SpellsList(props: SpellsListProps) {
         {!loading ?
             <div style={{width: '60vw'}}>
                 <>
-                <h2 style={{margin: '25px 0', textAlign: 'left'}}>Select your spell</h2>
+                <h2 style={{margin: '25px 0', textAlign: 'left'}}>
+                    Select your spell
+                </h2>
                 {optionList &&
                     <Select
                         options={optionList}
@@ -67,19 +63,24 @@ export function SpellsList(props: SpellsListProps) {
                     />
                 }   
                 </>
-            </div>
-            :
-                <Rings 
-                    color="#cec2ae"
-                    height="240"
-                    width="240"
-                />
+            </div> :
+            <Rings 
+                color="#cec2ae"
+                height="240"
+                width="240"
+            />
         }
         {selectedSpell &&
             selectedSpell.map((s, i) => {
                 return (
-                    <SpellCard spellIndex={s.value} index={i} favoriteList={props.favoriteList} handleDelete={props.handleDelete} handleSave={props.handleSave} />
-                )
+                    <SpellCard 
+                        spellIndex={s.value} 
+                        index={i} 
+                        favoriteList={props.favoriteList} 
+                        handleDelete={props.handleDelete} 
+                        handleSave={props.handleSave} 
+                    />
+                );
             })
 
         }
