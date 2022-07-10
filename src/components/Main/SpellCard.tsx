@@ -71,7 +71,7 @@ export function SpellCard(props: SpellCardProps) {
                         <p className="more-info">Hover over the icons below for more info..</p>
                     }
                     {props.index == 0 && isMobile &&
-                        <p className="more-info">Click on the icons below for more info..</p>
+                        <p className="more-info">Tap on the icons below for more info..</p>
                     }
                     <SpellIcons spellData={spellData} index={props.index} />
                     <div className="card-body">

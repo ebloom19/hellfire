@@ -36,7 +36,11 @@
 <h3 align="center">Hellfire D&D Spell-Caster Website</h3>
 
   <p align="center">
-    Simple DnD Spell Search site ..........
+    This project is a simple DnD5 spell search engine, that provides all the necessary info about the +300 spells in the Dungeons & Dragons game. This webpage calls upon the DnD5 API to obtain a list of spells and the finer details associated with them. 
+
+    The design of this webpage is heavily inspired by the widely popular Netflix series Stranger Things, in the series the Hellfire Club is the name of the local high school Dungeons and Dragons club. 
+
+This website uses React Redux for state management to implement a favorite spell list. In the redux store there is a simple function that saves and retrieves the state to local storage, to enable the user to refresh or close the site and come back to the same list.   
     <br />
     <a href="https://github.com/ebloom19/hellfire"><strong>Explore the docs »</strong></a>
     <br />
@@ -142,7 +146,22 @@ To get a local copy up and running follow these simple example steps.
 
 This website can be used by avid DnD fans who are looking at a quick simple and easy solution to searching for DnD5 spells. The ability to save your favorites to a list and come back to the site on the same site to view your favorites.
 
-<!-- _For more examples, please refer to the [Documentation](https://example.com)_ -->
+### Mobile App 
+(Mobile browser to save site as an app on the home screen)
+
+#### iPad or iPhone
+1. Launch “Safari” app.  This does not work from the “Chrome” app.
+2. Open the [website](https://hellfire-dnd.herokuapp.com)
+3. Tap the icon featuring a right-pointing arrow coming out of a box along the top of the Safari window to open a drop-down menu.
+4. Tap “Add to Home Screen.” The Add to Home dialog box will appear, with the icon that will be used for this website on the left side of the dialog box.
+5. Enter the name for the shortcut using the on-screen keyboard and tap “Add.” Safari will close automatically and you will be taken to where the icon is located on your iPad’s desktop.
+
+#### Android
+1. Launch “Chrome” app.
+2. Open the [website](https://hellfire-dnd.herokuapp.com)
+3. Tap the menu icon (3 dots in upper right-hand corner) and tap Add to homescreen.
+4. You’ll be able to enter a name for the shortcut and then Chrome will add it to your home screen.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -151,10 +170,10 @@ This website can be used by avid DnD fans who are looking at a quick simple and 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [ ] Responsive Design
+- [ ] Tooltip More info
+- [ ] Favorite List - Redux
+    - [ ] Redux state -> localStorage
 
 See the [open issues](https://github.com/ebloom19/hellfire/issues) for a full list of proposed features (and known issues).
 
@@ -197,18 +216,6 @@ Ethan Bloom - ebloom19@gmail.com
 Project Link: [https://github.com/ebloom19/hellfire](https://github.com/ebloom19/hellfire)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
