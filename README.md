@@ -86,7 +86,8 @@ This website uses React Redux for state management to implement a favorite spell
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://hellfire-dnd.herokuapp.com/)
+[![Hellfire_DnD Screen Shot][product-screenshot]](https://hellfire-dnd.herokuapp.com/)
+[![Hellfire_DnD Screen Shot Mobile][product-screenshot-mobile]](https://hellfire-dnd.herokuapp.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -232,7 +233,8 @@ Project Link: [https://github.com/ebloom19/hellfire](https://github.com/ebloom19
 [license-url]: https://github.com/ebloom19/hellfire/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/ethanbloom
-[product-screenshot]: https://live.staticflickr.com/65535/52205346832_d8e719374d_k.jpg
+[product-screenshot]: https://live.staticflickr.com/65535/52207725123_801017b0eb_k.jpg
+[product-screenshot-mobile]: https://live.staticflickr.com/65535/52207703696_6ac8091ac6_k.jpg
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
