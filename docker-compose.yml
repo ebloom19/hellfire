@@ -8,7 +8,7 @@ x-common-variables: &common-variables
 
 services:
   mysql:
-    image: hellfire.azurecr.io/mysql:5.7
+    image: mysql:5.7
     platform: linux/amd64
     environment:
       <<: *common-variables
@@ -22,7 +22,7 @@ services:
   phpmyadmin:
     depends_on:
       - mysql
-    image: hellfire.azurecr.io/phpmyadmin/phpmyadmin
+    image: phpmyadmin/phpmyadmin
     environment:
       PMA_HOST: mysql
     links:
@@ -52,9 +52,9 @@ services:
       <<: *common-variables
       NODE_PATH: src
     expose:
-      - 80
+      - 3000
     ports:
-      - 80:80
+      - 3000:3000
     volumes:
       - ./client/src:/app/src
     links:

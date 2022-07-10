@@ -11,6 +11,7 @@ export function SpellIcons(props: SpellIconsProps) {
     const [levelTooltip, showLevelTooltip] = useState(true);
     const [attackTooltip, showAttackTooltip] = useState(true);
     const [castingTooltip, showCastingTooltip] = useState(true);
+    const [componentsTooltip, setComponentsTooltip] = useState(true);
     const [concentrationTooltip, showConcentrationTooltip] = useState(true);
     const [rangeTooltip, showRangeTooltip] = useState(true);
     const [ritualTooltip, showRitualTooltip] = useState(true);
@@ -21,6 +22,7 @@ export function SpellIcons(props: SpellIconsProps) {
     const level = `level${props.index}`;
     const attack = `attack${props.index}`;
     const casting = `casting${props.index}`;
+    const components = `components${props.index}`;
     const concentration = `concentration${props.index}`;
     const range = `range${props.index}`;
     const ritual = `ritual${props.index}`;
@@ -61,7 +63,7 @@ export function SpellIcons(props: SpellIconsProps) {
                     
                 </div>
             }
-            {props.spellData.casting_time &&
+            {props.spellData.components && props.spellData.components.length > 0 &&
                 <div 
                     className="icons" 
                     data-tip 
@@ -74,6 +76,25 @@ export function SpellIcons(props: SpellIconsProps) {
                 >
                     <FontAwesomeIcon icon={solid('wand-magic')} className="mb-2"/>
                     <p>{props.spellData?.casting_time}</p>
+                </div>
+            }
+            {props.spellData.casting_time &&
+                <div 
+                    className="icons" 
+                    data-tip 
+                    data-for={components}
+                    onMouseEnter={() => setComponentsTooltip(true)}
+                    onMouseLeave={() => {
+                        setComponentsTooltip(false);
+                        setTimeout(() => setComponentsTooltip(true), 50);
+                    }}
+                >
+                    <FontAwesomeIcon icon={solid('meteor')} className="mb-3"/>
+                    <div>
+                        {props.spellData.components.map(c => {
+                            return <p style={{margin: '-5px 5px 0 5px'}}>{c}</p>
+                        })}
+                    </div>
                 </div>
             }
             {typeof props.spellData.concentration == "boolean" &&
@@ -161,6 +182,15 @@ export function SpellIcons(props: SpellIconsProps) {
             {levelTooltip &&
                 <ReactTooltip id={level} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Level</h4>
+                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
+                        Every spell has a level from 0 to 9. A spell’s level is a general indicator of how 
+                        powerful it is, with the lowly (but still impressive) Magic Missile at 1st Level and 
+                        the earth--shaking wish at 9th. Cantrips—simple but powerful Spells that Characters 
+                        can cast almost by rote—are level 0. The higher a spell’s level, the higher level a 
+                        Spellcaster must be to use that spell. Spell Level and character level don’t 
+                        correspond directly. Typically, a character has to be at least 17th level, not 9th 
+                        level, to cast a 9th--level spell.
+                    </p>
                     {props.spellData.higher_level.length > 0 &&
                         <>
                         <p style={{fontWeight: '700', textAlign: 'left'}}>Higher Level:</p>
@@ -189,6 +219,17 @@ export function SpellIcons(props: SpellIconsProps) {
                         his or her action in combat to cast such a spell. So, if you cast a spell 
                         with a casting time of 1 Action, you resolve it the exact same way that 
                         you would resolve an attack.
+                    </p>
+                </ReactTooltip>
+            }
+            {componentsTooltip &&
+                <ReactTooltip id={components} place="bottom" role='example'>
+                    <h4 style={{textAlign: 'left'}}>Components</h4>
+                    <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
+                        A spell’s Components are the physical requirements you must meet in order to cast 
+                        it. Each spell’s description indicates whether it requires Verbal (V), Somatic (S), 
+                        or Material (M) Components. If you can’t provide one or more of a spell’s Components, 
+                        you are unable to cast the spell.
                     </p>
                 </ReactTooltip>
             }
@@ -222,12 +263,14 @@ export function SpellIcons(props: SpellIconsProps) {
                 <ReactTooltip id={ritual} place="bottom" role='example'>
                     <h4 style={{textAlign: 'left'}}>Ritual</h4>
                     <p style={{maxWidth: '250px', fontWeight: '500', textAlign: 'left'}}>
-                        Ritual Spells in D&D 5e are spells that are able to be cast without using a spell slot. 
-                        These spells are typically utility spells that aid the caster by creating some effect.
-                        Some of these spells allow the caster to magically identify items or summon an invisible 
-                        servant to assist them with mundane tasks. Others allow the caster to communicate with 
-                        powerful beings beyond the Material Planes or attempt to divine the results of future 
-                        events.
+                        Certain Spells have a Special tag: ritual. Such a spell can be cast following the normal 
+                        rules for Spellcasting, or the spell can be cast as a ritual. The ritual version of a 
+                        spell takes 10 minutes longer to cast than normal. It also doesn’t expend a spell slot, 
+                        which means the ritual version of a spell can’t be cast at a higher level. To Cast a 
+                        Spell as a ritual, a Spellcaster must have a feature that grants the ability to do so. 
+                        The Cleric and the druid, for example, have such a feature. The caster must also have 
+                        the spell prepared or on his or her list of Spells known, unless the character’s ritual 
+                        feature specifies otherwise, as the wizard’s does.
                     </p>
                 </ReactTooltip>
             }
@@ -257,3 +300,8 @@ export function SpellIcons(props: SpellIconsProps) {
         </>
     )
 }
+
+
+// Caveat
+// Kalam
+//
