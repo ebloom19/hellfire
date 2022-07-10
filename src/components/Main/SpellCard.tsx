@@ -26,11 +26,6 @@ export function SpellCard(props: SpellCardProps) {
             })
     }, [props.spellIndex]);
 
-    
-    useEffect(() => {        
-        console.log('TETS ', props.favoriteList.indexOf(props.spellIndex));
-    }, [props.favoriteList])
-
     // Confusion
     // | d10 | Behavior |
     // |---|---|

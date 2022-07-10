@@ -35,7 +35,6 @@ class FavoriteContainer extends React.Component<FavoriteContainerProps, Favorite
 
     render() {
         let favoriteJSX: JSX.Element[] | JSX.Element;
-        console.log(this.props.favoriteList.length);
         if (this.props.favoriteList.length < 2) {
             favoriteJSX = <h3 style={{margin: '25px 0', textAlign: 'left'}}>No favorites found. Go Home to search and add!</h3>;
         } else {
