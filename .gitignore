@@ -1,3 +1,13 @@
-/client/node_modules
-/client/build
-/server/node_modules
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env
+npm-debug.log
