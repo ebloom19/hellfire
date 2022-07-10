@@ -97,6 +97,7 @@
 * [![SASS][SASS]][SASS-url]
 * [![Yarn][Yarn]][Yarn-url]
 * [![Babel][Babel]][Babel-url]
+* [![Heroku][Heroku]][Heroku-url]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -127,7 +128,7 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    yarn
    ```
-3. Run yarn start - will serve to http://localhost:3000/
+3. Run yarn start - will serve to http://localhost:3000
    ```sh
    yarn start
    ```
@@ -241,3 +242,5 @@ Project Link: [https://github.com/ebloom19/hellfire](https://github.com/ebloom19
 [Babel-url]: https://babeljs.io/
 [React-Router]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white
 [React-Router-url]: https://reactrouter.com/
+[Heroku]: https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white
+[Heroku-url]: https://www.heroku.com
