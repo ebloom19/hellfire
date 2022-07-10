@@ -13,7 +13,7 @@ export function NavLinks(props: any) {
                 <Link className="link" to="/">Spells</Link>
             </li>
             <li className="link-item">
-                <Link className="link" to="#">Favorites</Link>
+                <Link className="link" to="/favorites">Favorites</Link>
             </li>
         </ul>
       </div>
