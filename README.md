@@ -43,7 +43,7 @@
     <a href="https://github.com/ebloom19/hellfire"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://hellfire-dnd.herokuapp.com/">View Demo</a>
+    <a href="https://hellfire-dnd.herokuapp.com/" target="_blank">View Demo</a>
     ·
     <a href="https://github.com/ebloom19/hellfire/issues">Report Bug</a>
     ·
@@ -93,6 +93,12 @@
 ### Built With
 
 * [![React][React.js]][React-url]
+* [![TypeScript][TypeScript]][TypeScript-url]
+* [![Redux][Redux]][Redux-url]
+* [![React-Router][React-Router]][React-Router-url]
+* [![SASS][SASS]][SASS-url]
+* [![Yarn][Yarn]][Yarn-url]
+* [![Babel][Babel]][Babel-url]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -107,7 +113,11 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
+* npm (to install yarn)
+  ```sh
+  npm install npm@latest -g
+  ```
+* yarn
   ```sh
   npm install --global yarn
   ```
@@ -217,19 +227,19 @@ Project Link: [https://github.com/ebloom19/hellfire](https://github.com/ebloom19
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/ethanbloom
 [product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 [Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+[Redux]: https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white
+[Redux-url]: https://redux.js.org/
+[SASS]: https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white
+[SASS-url]: https://sass-lang.com/
+[TypeScript]: https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white
+[TypeScript-url]: https://www.typescriptlang.org/
+[Yarn]: https://img.shields.io/badge/yarn-%232C8EBB.svg?style=for-the-badge&logo=yarn&logoColor=white
+[Yarn-url]: https://yarnpkg.com/
+[Babel]: https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black
+[Babel-url]: https://babeljs.io/
+[React-Router]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white
+[React-Router-url]: https://reactrouter.com/
