@@ -30,9 +30,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/ebloom19/hellfire">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-    <img src="hellfire_club.webp" alt="Hellfire Club" width="80" height="80"/>
-    <img src="face.webp" alt="Hellfire Devil Face" width="80" height="80"/>
+    <img src="https://image-cdn.neatoshop.com/styleimg/134656/none/white/default/524447-20;1654086793y.jpg" alt="Hellfire Club" width="80" height="80"/>
   </a>
 
 <h3 align="center">Hellfire D&D Spell-Caster Website</h3>
@@ -106,8 +104,6 @@
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
@@ -124,14 +120,17 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Checkout the a free D&D 5e API API Key at [http://www.dnd5eapi.co/docs/#overview--getting-started](http://www.dnd5eapi.co/docs/#overview--getting-started)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/ebloom19/hellfire.git
    ```
-3. Install yarn packages
+2. Install yarn packages
    ```sh
    yarn
+   ```
+3. Run yarn start - will serve to http://localhost:3000/
+   ```sh
+   yarn start
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -141,7 +140,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+This website can be used by avid DnD fans who are looking at a quick simple and easy solution to searching for DnD5 spells. The ability to save your favorites to a list and come back to the site on the same site to view your favorites.
 
 <!-- _For more examples, please refer to the [Documentation](https://example.com)_ -->
 
@@ -226,7 +225,7 @@ Project Link: [https://github.com/ebloom19/hellfire](https://github.com/ebloom19
 [license-url]: https://github.com/ebloom19/hellfire/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/ethanbloom
-[product-screenshot]: https://live.staticflickr.com/65535/52205340207_dcf69425bc_k.jpg
+[product-screenshot]: https://live.staticflickr.com/65535/52205346832_d8e719374d_k.jpg
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
 [Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
@@ -243,6 +242,3 @@ Project Link: [https://github.com/ebloom19/hellfire](https://github.com/ebloom19
 [Babel-url]: https://babeljs.io/
 [React-Router]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white
 [React-Router-url]: https://reactrouter.com/
-
-
-<a data-flickr-embed="true" href="https://www.flickr.com/photos/196100606@N08/52205340207/in/dateposted-public/" title="Screen Shot 2022-07-10 at 8.00.00 pm"><img src="" width="2048" height="1168" alt="Screen Shot 2022-07-10 at 8.00.00 pm"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
