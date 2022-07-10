@@ -3,13 +3,15 @@ import { ReactDOM } from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { SpellIcons } from "./SpellIcons";
-import { SpellDataObject, SpellInfoProps } from "../../types/SpellData";
+import { SpellDataObject, SpellCardProps } from "../../types/SpellData";
 import Card from 'react-bootstrap/Card';
 import ReactHtmlParser from 'react-html-parser';
 import converter from 'number-to-words';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import '../scss/SpellData.scss';
 
-export function SpellCard(props: SpellInfoProps) {
+export function SpellCard(props: SpellCardProps) {
     const [spellData, setSpellData] = useState<SpellDataObject>();
 
     useEffect(() => {
@@ -40,6 +42,16 @@ export function SpellCard(props: SpellInfoProps) {
             <div className="spellCard borderGradient">
                 <Card.Body>
                     <h2 className="spellName">{spellData.name}</h2>
+                    {props.idx && props.handleDelete &&
+                        // <button onClick={() => props.idx && props.handleDelete && props.handleDelete(props.idx)}>X</button>
+                        <FontAwesomeIcon 
+                            icon={solid('heart')} 
+                            className="savedFavorite" 
+                            onClick={() => 
+                                props.idx && props.handleDelete && 
+                                props.handleDelete(props.idx)
+                            }/>
+                    }
                     <SpellIcons spellData={spellData} index={props.index} />
                     <div className="cardBody">
                         {

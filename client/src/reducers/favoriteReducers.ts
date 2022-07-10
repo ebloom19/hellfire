@@ -7,8 +7,8 @@ interface IFavoritesModel {
 }
 
 export const initialState: IFavoritesModel = {
-    count: 1,
-    list: ["aid"]
+    count: 0,
+    list: [""]
 }
 
 export const favoritesReducer = (state: IFavoritesModel = initialState, action: MyTypes.RootAction) => {

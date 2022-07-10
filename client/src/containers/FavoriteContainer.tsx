@@ -56,13 +56,14 @@ class FavoriteContainer extends React.Component<FavoriteContainerProps, Favorite
 
         return (
             <div>
-                {favoriteJSX}
                 <input
                     onChange={this.handleTextChange}
                     placeholder={"Test adding item text"}
                     value={this.state.favoriteInput}
-                />
+                    style={{margin: '40px 0'}}
+                    />
                 <button onClick={this.handleButtonClick}>Add Test Item</button>
+                {favoriteJSX}
             </div>
         );
     }

@@ -6,6 +6,7 @@
     border-width: 8px;
     background-color: white;
     margin: 30px 0;
+    position: relative;
   }
   
 .borderGradient {
@@ -63,3 +64,15 @@
     color: $dark-blue;
     font-size: 20px;
 }
+
+.savedFavorite {
+    color: $base-color;
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+}
+
+.savedFavorite:hover {
+    transform: scale(1.5);
+}
+

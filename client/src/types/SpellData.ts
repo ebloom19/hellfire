@@ -37,9 +37,11 @@
         url: string;
     }
 
-    export interface SpellInfoProps {
+    export interface SpellCardProps {
         spellIndex: string;
         index: number;
+        idx?: number;
+        handleDelete?: (idx: number) => void;
     }
 
     export interface SpellIconsProps {
