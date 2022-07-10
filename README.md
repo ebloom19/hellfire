@@ -30,7 +30,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/ebloom19/hellfire">
-    <img src="https://image-cdn.neatoshop.com/styleimg/134656/none/white/default/524447-20;1654086793y.jpg" alt="Hellfire Club" width="80" height="80"/>
+    <img src="https://image-cdn.neatoshop.com/styleimg/134656/none/white/default/524447-20;1654086793y.jpg" alt="Hellfire Club" width="140" height="140"/>
   </a>
 
 <h3 align="center">Hellfire D&D Spell-Caster Website</h3>
@@ -108,7 +108,6 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * npm (to install yarn)
   ```sh
   npm install npm@latest -g
@@ -192,7 +191,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - ebloom19@gmail.com
+Ethan Bloom - ebloom19@gmail.com
 
 Project Link: [https://github.com/ebloom19/hellfire](https://github.com/ebloom19/hellfire)
 
