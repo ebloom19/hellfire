@@ -1,6 +1,5 @@
 import React from "react";
 import { useMediaQuery } from "react-responsive";
-// import { Logo } from "../logo";
 import logo from './hellfire_club.webp';
 import face from './face.webp';
 import { Accessibility } from "./accessibility";

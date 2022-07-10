@@ -9,10 +9,14 @@ import ReactHtmlParser from 'react-html-parser';
 import converter from 'number-to-words';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { useMediaQuery } from "react-responsive";
+import { DeviceSize } from "../NavBar/responsive";
 import '../scss/SpellData.scss';
 
 export function SpellCard(props: SpellCardProps) {
     const [spellData, setSpellData] = useState<SpellDataObject>();
+
+    const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
 
     useEffect(() => {
         axios.get(`https://www.dnd5eapi.co/api/spells/${props.spellIndex}`)
@@ -40,7 +44,7 @@ export function SpellCard(props: SpellCardProps) {
 
     // 3d6 = roll three 6-sided dice
 
-
+    console.log('LLL ', props.index);
 
     return (
         <>
@@ -72,6 +76,12 @@ export function SpellCard(props: SpellCardProps) {
                             props.idx && props.handleDelete && props.favoriteList &&
                             props.handleDelete(props.favoriteList.indexOf(props.spellIndex))
                         }/>
+                    }
+                    {props.index == 0 && !isMobile &&
+                        <p className="moreInfo">Hover over the icons below to learn more..</p>
+                    }
+                    {props.index == 0 && isMobile &&
+                        <p className="moreInfo">Click on the icons below to learn more..</p>
                     }
                     <SpellIcons spellData={spellData} index={props.index} />
                     <div className="cardBody">

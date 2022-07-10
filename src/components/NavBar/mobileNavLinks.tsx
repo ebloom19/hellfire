@@ -30,7 +30,6 @@ export function MobileNavLinks(props: any) {
                 <div className="accessibility-container">
                     <Link className="register-button" to="/favorites" onClick={() => setOpen(false)}>Favorites</Link>
                 </div>
-                {/* <Accessibility /> */}
             </ul>
         )}
     </div>

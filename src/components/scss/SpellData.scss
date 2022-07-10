@@ -65,6 +65,14 @@
     font-size: 20px;
 }
 
+.moreInfo {
+    color: black;
+    font-size: 12px;
+    text-align: left;
+    padding: 0 1rem 1rem 1rem;
+    margin: 0;
+}
+
 .savedFavorite {
     color: $base-color;
     position: absolute;
@@ -93,6 +101,14 @@
     .savedFavorite {
         top: 1.5rem;
         right: 1.5rem;
+    }
+
+    .moreInfo {
+        font-size: 8px;
+    }
+
+    .spellName {
+        margin-bottom: 20px;
     }
 }
 
