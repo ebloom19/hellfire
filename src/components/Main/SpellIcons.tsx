@@ -10,6 +10,7 @@ import '../scss/SpellData.scss';
 export function SpellIcons(props: SpellIconsProps) {
     const [levelTooltip, showLevelTooltip] = useState(true);
     const [attackTooltip, showAttackTooltip] = useState(true);
+    const [schoolTooltip, setSchoolTooltip] = useState(true);
     const [castingTooltip, showCastingTooltip] = useState(true);
     const [componentsTooltip, setComponentsTooltip] = useState(true);
     const [concentrationTooltip, showConcentrationTooltip] = useState(true);
@@ -21,6 +22,7 @@ export function SpellIcons(props: SpellIconsProps) {
     // For if multiple spells selected
     const level = `level${props.index}`;
     const attack = `attack${props.index}`;
+    const school = `school${props.index}`;
     const casting = `casting${props.index}`;
     const components = `components${props.index}`;
     const concentration = `concentration${props.index}`;
@@ -61,6 +63,21 @@ export function SpellIcons(props: SpellIconsProps) {
                     <FontAwesomeIcon icon={solid('skull')} className="mb-2"/>
                     <p>{props.spellData.attack_type.charAt(0).toUpperCase() + props.spellData.attack_type.slice(1)}</p>
                     
+                </div>
+            }
+            {props.spellData.school &&
+                <div 
+                    className="icons" 
+                    data-tip 
+                    data-for={school}
+                    onMouseEnter={() => setSchoolTooltip(true)}
+                    onMouseLeave={() => {
+                        setSchoolTooltip(false);
+                        setTimeout(() => setSchoolTooltip(true), 50);
+                    }}
+                >
+                    <FontAwesomeIcon icon={solid('graduation-cap')} className="mb-2"/>
+                    <p>{props.spellData?.school.name}</p>
                 </div>
             }
             {props.spellData.components && props.spellData.components.length > 0 &&
@@ -196,7 +213,7 @@ export function SpellIcons(props: SpellIconsProps) {
                     </p>
                     {props.spellData.higher_level.length > 0 &&
                         <>
-                        <p style={{fontWeight: '700', textAlign: 'left'}}>Higher Level:</p>
+                        <h5 style={{textAlign: 'left'}}>Higher Level:</h5>
                         <p className="tooltip-text">
                             {props.spellData.higher_level}
                         </p>
@@ -211,6 +228,19 @@ export function SpellIcons(props: SpellIconsProps) {
                         Different attacks, damaging Spells, and other harmful Effects deal different 
                         types of damage. Damage Types have no rules of their own, but other rules, 
                         such as damage Resistance, rely on the types.
+                    </p>
+                </ReactTooltip>
+            }
+            {schoolTooltip &&
+                <ReactTooltip id={school} place="bottom" role='example'>
+                    <h4 style={{textAlign: 'left'}}>The Schools of Magic</h4>
+                    <p className="tooltip-text">
+                        Academies of magic group Spells into eight categories called Schools of Magic. 
+                        Scholars, particularly wizards, apply these categories to all Spells, believing 
+                        that all magic functions in essentially the same way, whether it derives from 
+                        rigorous study or is bestowed by a deity. The Schools of Magic help describe 
+                        spells; they have no rules of their own, although some rules refer to the 
+                        schools.
                     </p>
                 </ReactTooltip>
             }
@@ -234,6 +264,14 @@ export function SpellIcons(props: SpellIconsProps) {
                         or Material (M) Components. If you can’t provide one or more of a spell’s Components, 
                         you are unable to cast the spell.
                     </p>
+                    {props.spellData.material &&
+                        <>
+                        <h5 style={{textAlign: 'left'}}>Material:</h5>
+                        <p className="tooltip-text">
+                            {props.spellData.material}
+                        </p>
+                        </>
+                    }
                 </ReactTooltip>
             }
             {concentrationTooltip &&
@@ -297,6 +335,12 @@ export function SpellIcons(props: SpellIconsProps) {
                         and play a class effectively is the most important part of building an 
                         effective DnD character.
                     </p>
+                    {props.spellData.subclasses &&
+                        <>
+                        <h5 style={{textAlign: 'left'}}>Sub Classes:</h5>
+                        {props.spellData.subclasses.map(sc => <h6>{sc.name}</h6>)}
+                        </>
+                    }
                 </ReactTooltip>
             }
         </div>

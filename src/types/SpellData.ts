@@ -33,6 +33,7 @@ export interface SpellDataObject {
     attack_type: string;
     school: School;
     classes: Class[];
+    material: string;
     subclasses: Subclass[];
     url: string;
 }
