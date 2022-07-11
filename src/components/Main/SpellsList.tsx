@@ -10,6 +10,7 @@ import '../scss/SpellData.scss';
 
 export function SpellsList(props: SpellsListProps) {
     const [spells, setSpells] = useState<SpellsObject[]>();
+    const [errorMessage, setErrorMessage] = useState<string>();
     const [selectedSpell, setSelectedSpell] = useState<SelectOptionType[]>();
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -19,6 +20,10 @@ export function SpellsList(props: SpellsListProps) {
         axios.get('https://www.dnd5eapi.co/api/spells')
             .then(response => {
                 setSpells(response.data.results);
+                setLoading(false);
+            })
+            .catch(error => {
+                setErrorMessage(error.message);
                 setLoading(false);
             })
     }, []);
@@ -45,7 +50,7 @@ export function SpellsList(props: SpellsListProps) {
       
     return (
         <>
-        {!loading ?
+        {!loading && spells ?
             <div style={{width: '60vw'}}>
                 <>
                 <h2 style={{margin: '25px 0', textAlign: 'left'}}>
@@ -69,6 +74,11 @@ export function SpellsList(props: SpellsListProps) {
                 height="240"
                 width="240"
             />
+        }
+        {!loading && errorMessage &&
+            <h2 style={{margin: '25px 0', textAlign: 'left'}}>
+                {errorMessage}
+            </h2>
         }
         {selectedSpell &&
             selectedSpell.map((s, i) => {

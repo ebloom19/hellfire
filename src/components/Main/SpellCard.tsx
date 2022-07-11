@@ -15,6 +15,7 @@ import '../scss/SpellData.scss';
 
 export function SpellCard(props: SpellCardProps) {
     const [spellData, setSpellData] = useState<SpellDataObject>();
+    const [errorMessage, setErrorMessage] = useState<string>();
 
     const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
 
@@ -23,6 +24,9 @@ export function SpellCard(props: SpellCardProps) {
             .then(response => {
                 console.log(response);
                 setSpellData(response.data);
+            })
+            .catch(error => {
+                setErrorMessage(error.message);
             })
     }, [props.spellIndex]);
 
@@ -38,6 +42,11 @@ export function SpellCard(props: SpellCardProps) {
 
     return (
         <>
+        {errorMessage &&
+            <h2 style={{margin: '25px 0', textAlign: 'left'}}>
+                {errorMessage}
+            </h2>
+        }
         {spellData && props.spellIndex &&
             <div className="spell-card border-gradient">
                 <Card.Body>

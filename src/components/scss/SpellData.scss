@@ -84,9 +84,11 @@
     font-size: 25px;
 }
 
-.favorite:hover {
-    transform: scale(1.5);
-}
+@media (hover: hover) {
+    .favorite:hover {
+        transform: scale(1.5);
+    }
+  }
 
 @media only screen and (max-width: 768px) {
     .icons {
@@ -103,7 +105,7 @@
     }
 
     .favorite {
-        top: 1rem;
+        top: 0.7rem;
         right: 1rem;
     }
 

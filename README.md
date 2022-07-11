@@ -37,10 +37,11 @@
 
   <p align="center">
     This project is a simple DnD5 spell search engine, that provides all the necessary info about the +300 spells in the Dungeons & Dragons game. This webpage calls upon the DnD5 API to obtain a list of spells and the finer details associated with them. 
-
+    
     The design of this webpage is heavily inspired by the widely popular Netflix series Stranger Things, in the series the Hellfire Club is the name of the local high school Dungeons and Dragons club. 
+    
+    This website uses React Redux for state management to implement a favorite spell list. In the redux store there is a simple function that saves and retrieves the state to local storage, to enable the user to refresh or close the site and come back to the same list. 
 
-This website uses React Redux for state management to implement a favorite spell list. In the redux store there is a simple function that saves and retrieves the state to local storage, to enable the user to refresh or close the site and come back to the same list.   
     <br />
     <a href="https://github.com/ebloom19/hellfire"><strong>Explore the docs »</strong></a>
     <br />
