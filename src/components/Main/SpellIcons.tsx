@@ -32,7 +32,7 @@ export function SpellIcons(props: SpellIconsProps) {
     return (
         <>
         <div className="icons-list">
-            {props.spellData.level && props.spellData.level >= 0 &&
+            {props.spellData.level >= 0 &&
                 <div 
                     className="icons" 
                     data-tip 
