@@ -42,7 +42,7 @@ export function SpellCard(props: SpellCardProps) {
 
     return (
         <>
-        {errorMessage &&
+        {errorMessage && props.index == 0 &&
             <h2 style={{margin: '25px 0', textAlign: 'left'}}>
                 {errorMessage}
             </h2>
