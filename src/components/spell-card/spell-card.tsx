@@ -1,26 +1,24 @@
-import React from "react";
-import { ReactDOM } from "react";
+import React, { FC, useEffect, useState, useMemo } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { SpellIcons } from "./SpellIcons";
-import { SpellDataObject, SpellCardProps } from "../../types/SpellData";
+import { SpellIcons } from "../spell-icons/spell-icons";
+import { SpellCardType, SpellData } from './spell-card.types';
 import Card from 'react-bootstrap/Card';
 import ReactHtmlParser from 'react-html-parser';
 import converter from 'number-to-words';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { useMediaQuery } from "react-responsive";
-import { DeviceSize } from "../NavBar/responsive";
-import '../scss/SpellData.scss';
+import { breakPoints } from "../../styling/break-points";
+import '../../styling/scss/SpellData.scss';
 
-export function SpellCard(props: SpellCardProps) {
-    const [spellData, setSpellData] = useState<SpellDataObject>();
+export const SpellCard: FC<SpellCardType> = ({spellIndex, index, idx, handleDelete, handleSave, favouriteList}) => {
+    const [spellData, setSpellData] = useState<SpellData>();
     const [errorMessage, setErrorMessage] = useState<string>();
 
-    const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
+    const isMobile = useMediaQuery({ maxWidth: breakPoints.mobile });
 
-    useEffect(() => {
-        axios.get(`https://www.dnd5eapi.co/api/spells/${props.spellIndex}`)
+    useMemo(() => {
+        axios.get(`https://www.dnd5eapi.co/api/spells/${spellIndex}`)
             .then(response => {
                 console.log(response);
                 setSpellData(response.data);
@@ -28,51 +26,51 @@ export function SpellCard(props: SpellCardProps) {
             .catch(error => {
                 setErrorMessage(error.message);
             })
-    }, [props.spellIndex]);
+    }, [spellIndex]);
 
     return (
         <>
-        {errorMessage && props.index == 0 &&
+        {errorMessage && index == 0 &&
             <h2 style={{margin: '25px 0', textAlign: 'left'}}>
                 {errorMessage}
             </h2>
         }
-        {spellData && props.spellIndex &&
+        {spellData && spellIndex &&
             <div className="spell-card border-gradient">
                 <Card.Body>
                     <h2 className="spell-name">{spellData.name}</h2>
-                    {props.idx && props.handleDelete && props.favoriteList?.includes(props.spellIndex) &&
+                    {idx && handleDelete && favouriteList?.includes(spellIndex) &&
                         <FontAwesomeIcon 
                             icon={solid('heart')} 
                             className="favorite" 
                             onClick={() => 
-                                props.idx && props.handleDelete && 
-                                props.handleDelete(props.idx)
+                                idx && handleDelete && 
+                                handleDelete(idx)
                             }/>
                     }
-                    {props.spellIndex && props.handleSave && !props.favoriteList?.includes(props.spellIndex) ?
+                    {spellIndex && handleSave && !favouriteList?.includes(spellIndex) ?
                         <FontAwesomeIcon 
                             icon={regular('heart')} 
                             className="favorite" 
                             onClick={() => 
-                                props.handleSave && props.spellIndex &&
-                                props.handleSave(props.spellIndex)
+                                handleSave && spellIndex &&
+                                handleSave(spellIndex)
                             }/>:
                         <FontAwesomeIcon 
                         icon={solid('heart')} 
                         className="favorite" 
                         onClick={() => 
-                            props.idx && props.handleDelete && props.favoriteList &&
-                            props.handleDelete(props.favoriteList.indexOf(props.spellIndex))
+                            idx && handleDelete && favouriteList &&
+                            handleDelete(favouriteList.indexOf(spellIndex))
                         }/>
                     }
-                    {props.index == 0 && !isMobile &&
+                    {index == 0 && !isMobile &&
                         <p className="more-info">Hover over the icons below for more info..</p>
                     }
-                    {props.index == 0 && isMobile &&
+                    {index == 0 && isMobile &&
                         <p className="more-info">Tap on the icons below for more info..</p>
                     }
-                    <SpellIcons spellData={spellData} index={props.index} />
+                    <SpellIcons spellData={spellData} index={index} />
                     <div className="card-body">
                         {
                             spellData.desc?.map((t, i) => {

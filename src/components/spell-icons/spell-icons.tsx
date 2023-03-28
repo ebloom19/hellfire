@@ -1,13 +1,13 @@
 import React from "react";
 import { ReactDOM } from "react";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { SpellIconsType } from "./spell-icons.types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import ReactTooltip from 'react-tooltip';
-import { SpellIconsProps } from "../../types/SpellData";
-import '../scss/SpellData.scss';
+import '../../styling/scss/SpellData.scss';
 
-export function SpellIcons(props: SpellIconsProps) {
+export const SpellIcons: FC<SpellIconsType> = ({index, spellData}) => {
     const [levelTooltip, showLevelTooltip] = useState(true);
     const [attackTooltip, showAttackTooltip] = useState(true);
     const [schoolTooltip, setSchoolTooltip] = useState(true);
@@ -20,21 +20,21 @@ export function SpellIcons(props: SpellIconsProps) {
     const [classesTooltip, setClassesTooltip] = useState(true);
 
     // For if multiple spells selected
-    const level = `level${props.index}`;
-    const attack = `attack${props.index}`;
-    const school = `school${props.index}`;
-    const casting = `casting${props.index}`;
-    const components = `components${props.index}`;
-    const concentration = `concentration${props.index}`;
-    const range = `range${props.index}`;
-    const ritual = `ritual${props.index}`;
-    const duration = `duration${props.index}`;
-    const classes = `classes${props.index}`;
+    const level = `level${index}`;
+    const attack = `attack${index}`;
+    const school = `school${index}`;
+    const casting = `casting${index}`;
+    const components = `components${index}`;
+    const concentration = `concentration${index}`;
+    const range = `range${index}`;
+    const ritual = `ritual${index}`;
+    const duration = `duration${index}`;
+    const classes = `classes${index}`;
 
     return (
         <>
         <div className="icons-list">
-            {props.spellData.level >= 0 &&
+            {spellData.level >= 0 &&
                 <div 
                     className="icons" 
                     data-tip 
@@ -46,10 +46,10 @@ export function SpellIcons(props: SpellIconsProps) {
                     }}
                 >
                     <FontAwesomeIcon icon={solid('arrow-up-9-1')} className="mb-2"/>
-                    <p>{props.spellData.level}</p>
+                    <p>{spellData.level}</p>
                 </div>
             }
-            {props.spellData.attack_type &&
+            {spellData.attack_type &&
                 <div 
                     className="icons" 
                     data-tip 
@@ -61,11 +61,11 @@ export function SpellIcons(props: SpellIconsProps) {
                     }}
                 >
                     <FontAwesomeIcon icon={solid('skull')} className="mb-2"/>
-                    <p>{props.spellData.attack_type.charAt(0).toUpperCase() + props.spellData.attack_type.slice(1)}</p>
+                    <p>{spellData.attack_type.charAt(0).toUpperCase() + spellData.attack_type.slice(1)}</p>
                     
                 </div>
             }
-            {props.spellData.school &&
+            {spellData.school &&
                 <div 
                     className="icons" 
                     data-tip 
@@ -77,10 +77,10 @@ export function SpellIcons(props: SpellIconsProps) {
                     }}
                 >
                     <FontAwesomeIcon icon={solid('graduation-cap')} className="mb-2"/>
-                    <p>{props.spellData?.school.name}</p>
+                    <p>{spellData?.school.name}</p>
                 </div>
             }
-            {props.spellData.components && props.spellData.components.length > 0 &&
+            {spellData.components && spellData.components.length > 0 &&
                 <div 
                     className="icons" 
                     data-tip 
@@ -92,10 +92,10 @@ export function SpellIcons(props: SpellIconsProps) {
                     }}
                 >
                     <FontAwesomeIcon icon={solid('wand-magic')} className="mb-2"/>
-                    <p>{props.spellData?.casting_time}</p>
+                    <p>{spellData?.casting_time}</p>
                 </div>
             }
-            {props.spellData.casting_time &&
+            {spellData.casting_time &&
                 <div 
                     className="icons" 
                     data-tip 
@@ -108,13 +108,13 @@ export function SpellIcons(props: SpellIconsProps) {
                 >
                     <FontAwesomeIcon icon={solid('meteor')} className="mb-3"/>
                     <div>
-                        {props.spellData.components.map(c => {
+                        {spellData.components.map(c => {
                             return <p style={{margin: '-5px 5px 0 5px'}}>{c}</p>
                         })}
                     </div>
                 </div>
             }
-            {typeof props.spellData.concentration == "boolean" &&
+            {typeof spellData.concentration == "boolean" &&
                 <div 
                     className="icons"
                     data-tip 
@@ -126,10 +126,10 @@ export function SpellIcons(props: SpellIconsProps) {
                     }}
                 >
                     <FontAwesomeIcon icon={solid('brain')} className="mb-2"/>
-                    {props.spellData.concentration ? <FontAwesomeIcon className="mt-2" icon={solid('check')} /> : <FontAwesomeIcon className="mt-2" icon={solid('xmark')} />}
+                    {spellData.concentration ? <FontAwesomeIcon className="mt-2" icon={solid('check')} /> : <FontAwesomeIcon className="mt-2" icon={solid('xmark')} />}
                 </div>
             }
-            {props.spellData.range &&
+            {spellData.range &&
                 <div 
                     className="icons"
                     data-tip 
@@ -141,10 +141,10 @@ export function SpellIcons(props: SpellIconsProps) {
                     }}
                 >
                     <FontAwesomeIcon icon={solid('maximize')} className="mb-2"/>
-                    <p>{props.spellData.range}</p>
+                    <p>{spellData.range}</p>
                 </div>
             }
-            {typeof props.spellData.ritual == "boolean" &&
+            {typeof spellData.ritual == "boolean" &&
                 <div 
                     className="icons"
                     data-tip 
@@ -156,13 +156,13 @@ export function SpellIcons(props: SpellIconsProps) {
                     }}
                 >
                     <FontAwesomeIcon icon={solid('dragon')} className="mb-2"/>
-                    {props.spellData.ritual ? 
+                    {spellData.ritual ? 
                         <FontAwesomeIcon className="mt-2" icon={solid('check')} /> : 
                         <FontAwesomeIcon className="mt-2" icon={solid('xmark')} />
                     }
                 </div>
             }
-            {props.spellData.duration &&
+            {spellData.duration &&
                 <div 
                     className="icons"
                     data-tip 
@@ -174,10 +174,10 @@ export function SpellIcons(props: SpellIconsProps) {
                     }}
                 >
                     <FontAwesomeIcon icon={solid('stopwatch')} className="mb-2"/>
-                    <p>{props.spellData.duration}</p>
+                    <p>{spellData.duration}</p>
                 </div>
             }
-            {props.spellData.classes && props.spellData.classes.length > 0 &&
+            {spellData.classes && spellData.classes.length > 0 &&
                 <div 
                     className="icons"
                     data-tip 
@@ -190,8 +190,8 @@ export function SpellIcons(props: SpellIconsProps) {
                 >
                     <FontAwesomeIcon icon={solid('book-bookmark')} className="mb-3"/>
                     <div>
-                        {props.spellData.classes.map(c => {
-                            return <p style={{margin: '-5px 5px 0 5px'}}>{c.name}</p>
+                        {spellData.classes.map(className => {
+                            return <p style={{margin: '-5px 5px 0 5px'}}>{className.name}</p>
                         })}
                     </div>
                 </div>
@@ -211,11 +211,11 @@ export function SpellIcons(props: SpellIconsProps) {
                         correspond directly. Typically, a character has to be at least 17th level, not 9th 
                         level, to cast a 9th--level spell.
                     </p>
-                    {props.spellData.higher_level.length > 0 &&
+                    {spellData.higher_level.length > 0 &&
                         <>
                         <h5 style={{textAlign: 'left'}}>Higher Level:</h5>
                         <p className="tooltip-text">
-                            {props.spellData.higher_level}
+                            {spellData.higher_level}
                         </p>
                         </>
                     }
@@ -264,11 +264,11 @@ export function SpellIcons(props: SpellIconsProps) {
                         or Material (M) Components. If you can’t provide one or more of a spell’s Components, 
                         you are unable to cast the spell.
                     </p>
-                    {props.spellData.material &&
+                    {spellData.material &&
                         <>
                         <h5 style={{textAlign: 'left'}}>Material:</h5>
                         <p className="tooltip-text">
-                            {props.spellData.material}
+                            {spellData.material}
                         </p>
                         </>
                     }
@@ -335,10 +335,10 @@ export function SpellIcons(props: SpellIconsProps) {
                         and play a class effectively is the most important part of building an 
                         effective DnD character.
                     </p>
-                    {props.spellData.subclasses &&
+                    {spellData.subclasses &&
                         <>
                         <h5 style={{textAlign: 'left'}}>Sub Classes:</h5>
-                        {props.spellData.subclasses.map(sc => <h6>{sc.name}</h6>)}
+                        {spellData.subclasses.map(sc => <h6>{sc.name}</h6>)}
                         </>
                     }
                 </ReactTooltip>
@@ -346,9 +346,4 @@ export function SpellIcons(props: SpellIconsProps) {
         </div>
         </>
     )
-}
-
-
-// Caveat
-// Kalam
-//
+};

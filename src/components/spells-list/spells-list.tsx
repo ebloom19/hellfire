@@ -1,22 +1,19 @@
 import React from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useMemo, useState, FC } from "react";
 import Select from 'react-select';
-import { SpellCard } from "./SpellCard";
+import { SpellCard } from "../spell-card/spell-card";
 import { Rings } from 'react-loader-spinner';
-import { SpellsObject } from "../../types/SpellsList";
-import { SpellsListProps } from "../../types/SpellData";
-import '../scss/SpellData.scss';
+import { SpellsListType, SpellsObject, SelectOption } from './spells-list.types';
+import '../../styling/scss/SpellData.scss';
 
-export function SpellsList(props: SpellsListProps) {
+export const SpellsList:FC<SpellsListType> = ({ handleDelete, handleSave, favouriteList }) => {
     const [spells, setSpells] = useState<SpellsObject[]>();
     const [errorMessage, setErrorMessage] = useState<string>();
-    const [selectedSpell, setSelectedSpell] = useState<SelectOptionType[]>();
+    const [selectedSpell, setSelectedSpell] = useState<SelectOption[]>();
     const [loading, setLoading] = useState<boolean>(true);
-
-    type SelectOptionType = { label: string, value: string };
     
-    useEffect(() => {
+    useMemo(() => {
         axios.get('https://www.dnd5eapi.co/api/spells')
             .then(response => {
                 setSpells(response.data.results);
@@ -86,9 +83,9 @@ export function SpellsList(props: SpellsListProps) {
                     <SpellCard 
                         spellIndex={s.value} 
                         index={i} 
-                        favoriteList={props.favoriteList} 
-                        handleDelete={props.handleDelete} 
-                        handleSave={props.handleSave} 
+                        favouriteList={favouriteList} 
+                        handleDelete={handleDelete} 
+                        handleSave={handleSave} 
                     />
                 );
             })

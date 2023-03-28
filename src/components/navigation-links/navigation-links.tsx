@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import '../scss/NavBar.scss';
+import '../../styling/scss/NavBar.scss';
 
-export function NavLinks(props: any) {
+export function NavigationLinks() {
   return (
       <div className="nav-links-container">
          <ul className="links-wrapper">

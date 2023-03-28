@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import * as MyTypes from "MyTypes";
 import { actionTypes } from "src/actions/actions";
-import { FavoriteItem } from "../components/Main";
+import { SpellCard } from '../components';
 
 interface FavoriteContainerState {
     favoriteInput: string;
@@ -40,12 +40,13 @@ class FavoriteContainer extends React.Component<FavoriteContainerProps, Favorite
         } else {
             favoriteJSX = this.props.favoriteList.map((item, idx) => {
                 return (
-                    <FavoriteItem 
-                        item={item} 
-                        key={idx} 
+                    <SpellCard 
+                        spellIndex={item} 
+                        key={idx}
+                        index={idx}
                         idx={idx} 
                         handleDelete={this.handleDeleteButtonClick} 
-                        favoriteList={this.props.favoriteList} 
+                        favouriteList={this.props.favoriteList} 
                     />
                 );
             });

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Accessibility } from "./accessibility";
-import { MenuToggle } from "./menuToggle";
+import { MobileMenu } from "../mobile-menu/mobile-menu";
 import { Link } from "react-router-dom";
-import '../scss/NavBar.scss';
+import '../../styling/scss/NavBar.scss';
 
-export function MobileNavLinks(props: any) {
+export const MobileNavigationBar = () => {
   const [isOpen, setOpen] = useState(false);
 
   // Stop scroll ability if nav bar is open
@@ -18,7 +17,7 @@ export function MobileNavLinks(props: any) {
 
   return (
     <div className="nav-links-container">
-        <MenuToggle isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
+        <MobileMenu isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
         {isOpen && (
             <ul className="links-wrapper-mobile">
                 <li className="link-item-mobile">

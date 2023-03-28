@@ -1,18 +1,19 @@
 import { legacy_createStore as createStore } from "redux";
 import { favoritesReducer } from "src/reducers/favoriteReducers";
-import { loadState, saveState } from "../components/Main";
+import { loadState, useSetState } from "../hooks";
 import throttle from 'lodash.throttle';
 
 
-const persistedState = loadState();
+const persistedState = loadState('favourite-spells');
 const store = createStore(
     favoritesReducer,
     persistedState
 );
 
 store.subscribe(throttle(() => {
-    saveState(
-        store.getState()
+    useSetState(
+        store.getState(),
+        'favourite-spells'
     );
 }, 1000));
 
