@@ -1,28 +1,18 @@
 import { motion } from "framer-motion";
-import React from "react";
-import '../scss/NavBar.scss';
+import { FC } from 'react';
+import { MobileMenuType } from "./mobile-menu.types";
+import '../../styling/scss/NavBar.scss';
 
-const Path = (props: any) => (
-  <motion.path
-    fill="transparent"
-    strokeLinecap="round"
-    strokeWidth="3"
-    {...props}
-  />
-);
+export const MobileMenu: FC<MobileMenuType> = ({ toggle, isOpen }) => {
+    const transition = { duration: 0.33 };
 
-const transition = { duration: 0.33 };
-
-interface toggleObj {
-    toggle: any,
-    isOpen: boolean
-}
-
-export function MobileMenu({ toggle, isOpen }: toggleObj) {
   return (
       <div className="button" onClick={toggle}>
         <svg width="23" height="23" viewBox="0 0 23 23">
-            <Path
+            <motion.path
+                fill="transparent"
+                strokeLinecap="round"
+                strokeWidth="3"
                 animate={isOpen ? "open" : "closed"}
                 initial={false}
                 variants={{
@@ -31,7 +21,10 @@ export function MobileMenu({ toggle, isOpen }: toggleObj) {
                 }}
                 transition={transition}
             />
-            <Path
+            <motion.path
+                fill="transparent"
+                strokeLinecap="round"
+                strokeWidth="3"
                 d="M 2 9.423 L 20 9.423"
                 stroke="hsl(0, 0%, 18%)"
                 animate={isOpen ? "open" : "closed"}
@@ -42,7 +35,10 @@ export function MobileMenu({ toggle, isOpen }: toggleObj) {
                 }}
                 transition={transition}
             />
-            <Path
+            <motion.path
+                fill="transparent"
+                strokeLinecap="round"
+                strokeWidth="3"
                 animate={isOpen ? "open" : "closed"}
                 initial={false}
                 variants={{

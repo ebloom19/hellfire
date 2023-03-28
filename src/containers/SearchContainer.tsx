@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import * as MyTypes from "MyTypes";
 import { actionTypes } from "src/actions/actions";
-import { SpellsList } from "../components/Main";
+import { SpellsList } from "../components";
 
 interface FavoriteContainerState {
     favoriteInput: string;
@@ -33,7 +33,7 @@ class SearchContainer extends React.Component<FavoriteContainerProps, FavoriteCo
     render() {
         return (
             <SpellsList 
-                favoriteList={this.props.favoriteList} 
+                favouriteList={this.props.favoriteList} 
                 handleDelete={this.handleDeleteButtonClick} 
                 handleSave={this.handleButtonClick}
             />

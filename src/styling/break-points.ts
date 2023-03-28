@@ -1,4 +1,4 @@
-export const BreakPoints = {
+export const breakPoints = {
   mobile: 768,
   tablet: 992,
   laptop: 1324,
