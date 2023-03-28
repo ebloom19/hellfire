@@ -18,7 +18,7 @@ interface toggleObj {
     isOpen: boolean
 }
 
-export function MenuToggle({ toggle, isOpen }: toggleObj) {
+export function MobileMenu({ toggle, isOpen }: toggleObj) {
   return (
       <div className="button" onClick={toggle}>
         <svg width="23" height="23" viewBox="0 0 23 23">

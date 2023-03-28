@@ -1,4 +1,4 @@
-export const DeviceSize = {
+export const BreakPoints = {
   mobile: 768,
   tablet: 992,
   laptop: 1324,

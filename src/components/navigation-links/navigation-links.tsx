@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import '../scss/NavBar.scss';
 
-export function NavLinks(props: any) {
+export function NavigationLinks(props: any) {
   return (
       <div className="nav-links-container">
          <ul className="links-wrapper">
