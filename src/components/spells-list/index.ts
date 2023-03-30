@@ -1,1 +1,1 @@
-export * from './spells-list';
+export * from "./spells-list";

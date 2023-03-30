@@ -1,6 +1,6 @@
-import { SpellData } from "../spell-card/spell-card.types"
+import { SpellData } from "../spell-card/spell-card.types";
 
 export type SpellIconsType = {
-    spellData: SpellData;
-    index: number;
-}
+	spellData: SpellData;
+	index: number;
+};

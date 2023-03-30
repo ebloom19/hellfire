@@ -1,125 +1,110 @@
-import React, { FC, useEffect, useState, useMemo } from "react";
+import "../../styling/scss/SpellData.scss";
+
+import { regular, solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-import { SpellIcons } from "../spell-icons/spell-icons";
-import { SpellCardType, SpellData } from './spell-card.types';
-import Card from 'react-bootstrap/Card';
-import ReactHtmlParser from 'react-html-parser';
-import converter from 'number-to-words';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro';
+import converter from "number-to-words";
+import React, { FC, useEffect, useMemo, useState } from "react";
+import Card from "react-bootstrap/Card";
+import ReactHtmlParser from "react-html-parser";
 import { useMediaQuery } from "react-responsive";
+
 import { breakPoints } from "../../styling/break-points";
-import '../../styling/scss/SpellData.scss';
+import { SpellIcons } from "../spell-icons/spell-icons";
+import { SpellCardType, SpellData } from "./spell-card.types";
 
-export const SpellCard: FC<SpellCardType> = ({spellIndex, index, idx, handleDelete, handleSave, favouriteList}) => {
-    const [spellData, setSpellData] = useState<SpellData>();
-    const [errorMessage, setErrorMessage] = useState<string>();
+export const SpellCard: FC<SpellCardType> = ({ spellIndex, key, idx, handleDelete, handleSave, favouriteList }) => {
+	const [spellData, setSpellData] = useState<SpellData>();
+	const [errorMessage, setErrorMessage] = useState<string>();
 
-    const isMobile = useMediaQuery({ maxWidth: breakPoints.mobile });
+	const isMobile = useMediaQuery({ maxWidth: breakPoints.mobile });
 
-    useMemo(() => {
-        axios.get(`https://www.dnd5eapi.co/api/spells/${spellIndex}`)
-            .then(response => {
-                console.log(response);
-                setSpellData(response.data);
-            })
-            .catch(error => {
-                setErrorMessage(error.message);
-            })
-    }, [spellIndex]);
+	useMemo(() => {
+		axios
+			.get(`https://www.dnd5eapi.co/api/spells/${spellIndex}`)
+			.then((response) => {
+				console.log(response);
+				setSpellData(response.data);
+			})
+			.catch((error) => {
+				setErrorMessage(error.message);
+			});
+	}, [spellIndex]);
 
-    return (
-        <>
-        {errorMessage && index == 0 &&
-            <h2 style={{margin: '25px 0', textAlign: 'left'}}>
-                {errorMessage}
-            </h2>
-        }
-        {spellData && spellIndex &&
-            <div className="spell-card border-gradient">
-                <Card.Body>
-                    <h2 className="spell-name">{spellData.name}</h2>
-                    {idx && handleDelete && favouriteList?.includes(spellIndex) &&
-                        <FontAwesomeIcon 
-                            icon={solid('heart')} 
-                            className="favorite" 
-                            onClick={() => 
-                                idx && handleDelete && 
-                                handleDelete(idx)
-                            }/>
-                    }
-                    {spellIndex && handleSave && !favouriteList?.includes(spellIndex) ?
-                        <FontAwesomeIcon 
-                            icon={regular('heart')} 
-                            className="favorite" 
-                            onClick={() => 
-                                handleSave && spellIndex &&
-                                handleSave(spellIndex)
-                            }/>:
-                        <FontAwesomeIcon 
-                        icon={solid('heart')} 
-                        className="favorite" 
-                        onClick={() => 
-                            idx && handleDelete && favouriteList &&
-                            handleDelete(favouriteList.indexOf(spellIndex))
-                        }/>
-                    }
-                    {index == 0 && !isMobile &&
-                        <p className="more-info">Hover over the icons below for more info..</p>
-                    }
-                    {index == 0 && isMobile &&
-                        <p className="more-info">Tap on the icons below for more info..</p>
-                    }
-                    <SpellIcons spellData={spellData} index={index} />
-                    <div className="card-body">
-                        {
-                            spellData.desc?.map((t, i) => {
+	return (
+		<>
+			{errorMessage && key == 0 && <h2 style={{ margin: "25px 0", textAlign: "left" }}>{errorMessage}</h2>}
+			{spellData && spellIndex && (
+				<div className="spell-card border-gradient">
+					<Card.Body>
+						<h2 className="spell-name">{spellData.name}</h2>
+						{idx && handleDelete && favouriteList?.includes(spellIndex) && (
+							<FontAwesomeIcon
+								icon={solid("heart")}
+								className="favorite"
+								onClick={() => idx && handleDelete && handleDelete(idx)}
+							/>
+						)}
+						{spellIndex && handleSave && !favouriteList?.includes(spellIndex) ? (
+							<FontAwesomeIcon
+								icon={regular("heart")}
+								className="favorite"
+								onClick={() => handleSave && spellIndex && handleSave(spellIndex)}
+							/>
+						) : (
+							<FontAwesomeIcon
+								icon={solid("heart")}
+								className="favorite"
+								onClick={() => idx && handleDelete && favouriteList && handleDelete(favouriteList.indexOf(spellIndex))}
+							/>
+						)}
+						{key == 0 && !isMobile && <p className="more-info">Hover over the icons below for more info..</p>}
+						{key == 0 && isMobile && <p className="more-info">Tap on the icons below for more info..</p>}
+						<SpellIcons spellData={spellData} index={key} />
+						<div className="card-body">
+							{spellData.desc?.map((t, i) => {
+								// Filter text body for -> ***Text*** = Bold Blue Text
+								let words = t.split(" ").map((w) => {
+									return w.includes("***")
+										? `<b class="bold-text">
+                                                ${w.replace("***", "").replace(".***", "").replace(".", "")}
+                                            </b>`
+										: w;
+								});
 
-                                // Filter text body for -> ***Text*** = Bold Blue Text
-                                let words = t.split(' ').map(w => {
-                                    return (
-                                        w.includes('***') ? 
-                                            `<b class="bold-text">
-                                                ${w.replace('***', '').replace('.***', '').replace('.', '')}
-                                            </b>` : 
-                                            w
-                                    );
-                                });
+								// Filter text body for -> 3d6 = roll three 6-sided dice
+								words = words.map((w) => {
+									const hasNumber = /\d/;
+									return hasNumber.test(w) &&
+										w.includes("d") &&
+										!w.includes("r") &&
+										w.split("").length < 6 &&
+										w.split("d")[0]
+										? `<b>${w}</b> (roll ${Number(w.split("d")[0]) && w.split("d")[0]} ${
+												Number(w.split("d")[1]) && converter.toWords(w.split("d")[1])
+										  }-sided dice)`
+										: w;
+								});
 
-                                // Filter text body for -> 3d6 = roll three 6-sided dice
-                                words = words.map(w => {
-                                    const hasNumber = /\d/;
-                                    return (
-                                        hasNumber.test(w) && w.includes('d') && !w.includes('r') && w.split('').length < 6 && w.split('d')[0] ?
-                                            `<b>${w}</b> (roll ${Number(w.split('d')[0]) && w.split('d')[0]} ${Number(w.split('d')[1]) && converter.toWords(w.split('d')[1])}-sided dice)` :
-                                            w
-                                    );
-                                });
+								// filter for Confusion structure
+								// | d10 | Behavior |
+								// |---|---|
 
-                                // filter for Confusion structure 
-                                // | d10 | Behavior |
-                                // |---|---|        
+								// Animated Object Statistics
+								// #####
 
-                                // Animated Object Statistics
-                                // #####
+								const text = words.join(" ");
 
-                                const text = words.join(' ');
-
-                                return (
-                                    text.startsWith("-") ?
-                                        <li className="list-item">
-                                            { text.replace('-', '') }
-                                        </li> :
-                                        <p className="text-sm-left my-2">
-                                            { ReactHtmlParser(text) }
-                                        </p>
-                                );
-                            })
-                        }
-                    </div>
-                </Card.Body>
-            </div>
-        }
-        </>
-    )
+								return text.startsWith("-") ? (
+									<li className="list-item">{text.replace("-", "")}</li>
+								) : (
+									<p className="text-sm-left my-2">{ReactHtmlParser(text)}</p>
+								);
+							})}
+						</div>
+					</Card.Body>
+				</div>
+			)}
+		</>
+	);
 };
