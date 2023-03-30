@@ -115,10 +115,6 @@ To get a local copy up and running follow these simple example steps.
   ```sh
   npm install npm@latest -g
   ```
-* yarn
-  ```sh
-  npm install --global yarn
-  ```
 
 ### Installation
 
@@ -128,11 +124,11 @@ To get a local copy up and running follow these simple example steps.
    ```
 2. Install yarn packages
    ```sh
-   yarn
+   npm i
    ```
 3. Run yarn start - will serve to http://localhost:3000
    ```sh
-   yarn start
+   npm start
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
