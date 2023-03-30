@@ -1,1 +1,1 @@
-export * from './spell-icons';
+export * from "./spell-icons";

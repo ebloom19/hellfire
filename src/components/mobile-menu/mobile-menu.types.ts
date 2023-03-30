@@ -1,4 +1,4 @@
 export type MobileMenuType = {
-    toggle: () => void,
-    isOpen: boolean
-}
+	toggle: () => void;
+	isOpen: boolean;
+};

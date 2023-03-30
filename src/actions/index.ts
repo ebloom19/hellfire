@@ -1,1 +1,1 @@
-export { actionTypes, favoriteActions } from './actions';
+export { actionTypes, favoriteActions } from "./actions";
