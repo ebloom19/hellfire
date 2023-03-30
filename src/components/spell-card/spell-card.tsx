@@ -3,10 +3,10 @@ import "../../styling/scss/SpellData.scss";
 import { regular, solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import parse from "html-react-parser";
 import converter from "number-to-words";
 import React, { FC, useEffect, useMemo, useState } from "react";
 import Card from "react-bootstrap/Card";
-import ReactHtmlParser from "react-html-parser";
 import { useMediaQuery } from "react-responsive";
 
 import { breakPoints } from "../../styling/break-points";
@@ -98,7 +98,7 @@ export const SpellCard: FC<SpellCardType> = ({ spellIndex, key, idx, handleDelet
 								return text.startsWith("-") ? (
 									<li className="list-item">{text.replace("-", "")}</li>
 								) : (
-									<p className="text-sm-left my-2">{ReactHtmlParser(text)}</p>
+									<p className="text-sm-left my-2">{parse(text)}</p>
 								);
 							})}
 						</div>

@@ -1,5 +1,4 @@
 import "./App.scss";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import { Link, Route, Routes } from "react-router-dom";
 import FavoriteContainer from "src/containers/FavoriteContainer";
