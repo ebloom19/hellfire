@@ -48,7 +48,6 @@ class FavoriteContainer extends React.Component<FavoriteContainerProps, Favorite
 					<SpellCard
 						spellIndex={item}
 						key={idx}
-						index={idx}
 						idx={idx}
 						handleDelete={this.handleDeleteButtonClick}
 						favouriteList={this.props.favoriteList}
